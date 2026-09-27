@@ -1,0 +1,14 @@
+# Local orchestration state and working plans, not public documentation.
+/.superpowers/
+/docs/superpowers/
+/.worktree/
+/.hrym/work/
+
+# Local environment secrets; example files may be committed intentionally.
+.env
+.env.*
+!.env.example
+
+# Local Python execution artifacts.
+__pycache__/
+*.py[cod]

@@ -1,0 +1,3 @@
+# Separate workflow, installation, and application routing
+
+Keep the execution procedure and skill catalogue portable while initially integrating with OpenCode on Linux and Windows. A Python 3.10+ standard-library installer copies selected trusted skills; an agent-guided setup separately merges application configuration after approval. This avoids making skill installation a general JSONC editor or tying workflow ownership to an orchestration plugin. Native OpenCode subagents do not require Superpowers, and the recommended profile uses one owner per phase with an explicit verification contract.

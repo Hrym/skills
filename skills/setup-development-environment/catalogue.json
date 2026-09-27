@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "sources": {
+    "hrym": {
+      "url": "git@github.com:Hrym/skills.git",
+      "ref": "main",
+      "license": "LICENSE"
+    },
+    "matt": {
+      "url": "https://github.com/mattpocock/skills.git",
+      "ref": "c55ee46073ed923f86ce59a5eb3b6d895095d1b7",
+      "license": "LICENSE"
+    }
+  },
+  "skills": {
+    "setup-development-environment": {
+      "source": "hrym",
+      "path": "skills/setup-development-environment",
+      "description": "Install the selected skills and configure the approved development workflow.",
+      "requires": ["capture-intent", "execute-approved-work", "write-commit-and-pr", "finish-approved-work", "setup-opencode-routing", "grill-with-docs", "setup-matt-pocock-skills", "diagnosing-bugs"]
+    },
+    "capture-intent": {
+      "source": "hrym",
+      "path": "skills/capture-intent",
+      "description": "Preserve feature and architecture purpose in an existing brief or concise intent record.",
+      "requires": []
+    },
+    "write-commit-and-pr": {
+      "source": "hrym",
+      "path": "skills/write-commit-and-pr",
+      "description": "Draft Git commit messages and PR descriptions explaining motivation, approach, and evidence.",
+      "requires": []
+    },
+    "finish-approved-work": {
+      "source": "hrym",
+      "path": "skills/finish-approved-work",
+      "description": "Carry out an authorized merge, squash, publication, or owned-workspace cleanup with evidence and scope control.",
+      "requires": ["write-commit-and-pr"]
+    },
+    "execute-approved-work": {
+      "source": "hrym",
+      "path": "skills/execute-approved-work",
+      "description": "Execute approved requirements with bounded workers, behavioral checks, and independent review.",
+      "requires": ["tdd", "code-review"]
+    },
+    "setup-opencode-routing": {
+      "source": "hrym",
+      "path": "skills/setup-opencode-routing",
+      "description": "Configure OpenCode role/model bindings, permissions, and reasoning defaults.",
+      "requires": []
+    },
+    "grill-with-docs": {
+      "source": "matt",
+      "path": "skills/engineering/grill-with-docs",
+      "description": "Clarify design decisions while retaining a glossary and architecture decisions.",
+      "requires": ["grilling", "domain-modeling"]
+    },
+    "grilling": {
+      "source": "matt",
+      "path": "skills/productivity/grilling",
+      "description": "Interview primitive used by grill-with-docs.",
+      "requires": []
+    },
+    "domain-modeling": {
+      "source": "matt",
+      "path": "skills/engineering/domain-modeling",
+      "description": "Maintain project terminology and record consequential design decisions.",
+      "requires": []
+    },
+    "tdd": {
+      "source": "matt",
+      "path": "skills/engineering/tdd",
+      "description": "Test observable behavior at agreed public boundaries, one red-green slice at a time.",
+      "requires": ["codebase-design"]
+    },
+    "codebase-design": {
+      "source": "matt",
+      "path": "skills/engineering/codebase-design",
+      "description": "Shared vocabulary for module boundaries and testing seams.",
+      "requires": []
+    },
+    "code-review": {
+      "source": "matt",
+      "path": "skills/engineering/code-review",
+      "description": "Independent standards and specification review of a defined change.",
+      "requires": ["setup-matt-pocock-skills"]
+    },
+    "diagnosing-bugs": {
+      "source": "matt",
+      "path": "skills/engineering/diagnosing-bugs",
+      "description": "Investigate non-obvious bugs and performance regressions through a scoped reproduction or measurement loop.",
+      "requires": []
+    },
+    "writing-for-agents": {
+      "source": "matt",
+      "path": "skills/productivity/writing-for-agents",
+      "description": "Write and maintain concise skills and agent-facing instructions with clear triggers and completion criteria.",
+      "requires": []
+    },
+    "setup-matt-pocock-skills": {
+      "source": "matt",
+      "path": "skills/engineering/setup-matt-pocock-skills",
+      "description": "Configure a project's tracker and domain-document conventions after approval.",
+      "requires": []
+    },
+    "to-spec": {
+      "source": "matt",
+      "path": "skills/engineering/to-spec",
+      "description": "Turn agreed decisions into a specification using the configured tracker.",
+      "requires": ["setup-matt-pocock-skills", "domain-modeling"]
+    },
+    "to-tickets": {
+      "source": "matt",
+      "path": "skills/engineering/to-tickets",
+      "description": "Decompose larger work into approved, dependency-aware vertical slices.",
+      "requires": ["setup-matt-pocock-skills", "domain-modeling"]
+    }
+  },
+  "groups": {
+    "core": ["setup-development-environment"],
+    "planning": ["to-spec", "to-tickets"],
+    "authoring": ["writing-for-agents"]
+  }
+}
