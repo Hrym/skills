@@ -9,7 +9,7 @@ For the reasoning behind the defaults, see [Routing design](routing-design.md). 
 ## Requirements and compatibility
 
 - OpenCode with native skills, custom agents, per-agent model variants, and task permissions.
-- An authenticated provider with access to the models you select. The supplied no-Astra example uses `openai/gpt-5.6-sol`, `openai/gpt-6-sol`, and `openai/gpt-6-luna`; Astra access is optional. Confirm each binding for your environment.
+- An authenticated provider with access to the models you select. The supplied no-Astra example uses `openai/gpt-6.1-sol` and `openai/gpt-6-luna`; Astra access is optional. Confirm each binding for your environment.
 - Permission to modify your chosen global or project configuration.
 - Native OpenCode subagents; no orchestration plugin is required. The recommended workflow uses `execute-approved-work` with behavioral TDD and independent review at meaningful delivery boundaries.
 
@@ -43,13 +43,15 @@ Backups may contain credentials or private provider/MCP settings. Keep them loca
 
 State the scope, provider, confirmed models, and exclusions. For example:
 
-> Use setup-opencode-routing to configure my global OpenCode agents. GPT-5.6 Sol, GPT-6 Sol, and GPT-6 Luna work through Copilot; Astra is unavailable. Preserve my existing settings and show the proposed changes before applying them.
+> Use setup-opencode-routing to configure my global OpenCode agents. GPT-6.1 Sol and GPT-6 Luna work through Copilot; Astra is unavailable. Preserve my existing settings and show the proposed changes before applying them.
 
 For a stronger-model profile:
 
-> Use setup-opencode-routing for this project. GPT-5.6 Sol, GPT-6 Sol, GPT-6 Luna, and GPT-6 Astra are available through OpenAI. Include an optional strong-model primary agent for complex work. Preserve unrelated configuration.
+> Use setup-opencode-routing for this project. GPT-6.1 Sol, GPT-6 Luna, and GPT-6 Astra are available through OpenAI. Use Astra for architect and implement-complex. Ask me separately whether to enable Deep; preserve unrelated configuration.
 
 The skill should inspect existing configuration and overrides, confirm exact model IDs, and explain intended permission changes before merging the templates. A model listed by `opencode models` is a candidate, not proof that your account can invoke it. Confirm access or explicitly authorize a small paid test; do not activate unverified model-specific routes.
+
+Confirmed Astra access and approval of Astra workers do not enable `deep`. Ask for separate opt-in; keep it disabled by default, and preserve a previously explicit Deep choice unless the user requests a change. Enabled Deep is an Astra `medium` primary, not a worker.
 
 ## What gets configured
 
@@ -57,17 +59,17 @@ The role structure stays stable while model assignments adapt to your provider a
 
 | Agent | Purpose | Quality-first (no Astra) | Optional stronger profile | Effort default |
 |---|---|---|---|---|
-| Top-level default, `build`, `plan` | Coordinate work and integrate results | GPT-5.6 Sol | GPT-5.6 Sol | `medium` for agents |
-| `general` | Standard implementation and independent review | GPT-5.6 Sol | GPT-5.6 Sol | `medium` |
-| `explore` | Broad read-only code, document, and web discovery | GPT-6 Luna | GPT-6 Luna | `low` |
-| `researcher` | Read-only dense local-specification/web-source interpretation | GPT-6 Sol | GPT-6 Sol | `medium` |
+| Top-level default, `build`, `plan` | Coordinate work and integrate results | GPT-6.1 Sol | GPT-6.1 Sol | `medium` for agents |
+| `general` | Standard implementation and independent review | GPT-6.1 Sol | GPT-6.1 Sol | `medium` |
+| `explore` | Broad read-only code, document, and web discovery | GPT-6 Luna | GPT-6 Luna | `medium` |
+| `researcher` | Read-only dense local-specification/web-source interpretation | GPT-6.1 Sol | GPT-6.1 Sol | `medium` |
 | `implement-small` | Clear, localized, existing-pattern changes | GPT-6 Luna | GPT-6 Luna | `medium` |
-| `verify` | Noisy builds/tests and log triage; no fixes | GPT-6 Luna | GPT-6 Luna | `low` |
-| `architect` | Read-only design advice | GPT-5.6 Sol | GPT-6 Astra, if confirmed | `high` |
-| `implement-complex` | Difficult implementation, diagnosis, and review | GPT-5.6 Sol | GPT-6 Astra, if confirmed | `high` |
-| `deep` | Optional primary coordinator for globally complex work | Disabled | GPT-6 Astra, if confirmed | `high` |
+| `verify` | Noisy builds/tests and log triage; no fixes | GPT-6 Luna | GPT-6 Luna | `medium` |
+| `architect` | Read-only design advice | GPT-6.1 Sol | GPT-6 Astra, if confirmed | `high` without Astra; `medium` with Astra |
+| `implement-complex` | Difficult implementation, diagnosis, and review | GPT-6.1 Sol | GPT-6 Astra, if confirmed | `high` without Astra; `medium` with Astra |
+| `deep` | Optional primary coordinator for globally complex work | Disabled | Disabled until separate opt-in; then GPT-6 Astra | `medium` if enabled |
 
-These OpenAI bindings are starting defaults, not a required provider contract or benchmark-proven optimum. Check variants for the exact provider/model before applying them. GPT-5.6 Sol with higher effort or separate context is not equivalent to Astra. If price takes priority, GPT-6 Sol can be evaluated as an alternative for standard coordination and `general` after confirming access and comparing representative outcomes; it is not the bundled default.
+These OpenAI bindings are starting defaults, not a required provider contract or benchmark-proven optimum. Check variants for the exact provider/model before applying them. Higher effort or separate context is not equivalent to Astra.
 
 Setup merges these files into the chosen config directory:
 
@@ -88,7 +90,7 @@ Existing plugins, providers, MCP settings, unrelated agents, and stricter unrela
 
 Build and enabled `deep` can invoke the seven workers (`explore`, `researcher`, `architect`, `implement-small`, `general`, `implement-complex`, `verify`). Plan can invoke only read-only `explore`, `researcher`, and `architect`. Workers cannot delegate. The researcher and architect deny task, edit, and shell tools; native read/web tools remain available under existing permissions. `verify` denies edit tools but can run checks under the existing shell policy. **Tool permissions are not a filesystem sandbox**: verification commands can create artifacts. Review custom tools separately.
 
-Routine contextual lookups stay with the coordinator; broad straightforward discovery goes to Luna `explore`, while dense source reconciliation can go straight to the read-only GPT-6 Sol `researcher`. No mandatory discovery/research/advisor chain: the coordinator checks decisive original passages and searches consequential omissions independently. Consult `architect` for difficult design, not just more documents. Researcher evidence includes original excerpts with headers/qualifiers and locations, source authority/version, applicability, exceptions/conflicts, coverage/gaps, and uncertainty.
+Routine contextual lookups stay with the coordinator; broad straightforward discovery goes to Luna `explore`, while dense source reconciliation can go straight to the read-only GPT-6.1 Sol `researcher`. No mandatory discovery/research/advisor chain: the coordinator checks decisive original passages and searches consequential omissions independently. Consult `architect` for difficult design, not just more documents. Researcher evidence includes original excerpts with headers/qualifiers and locations, source authority/version, applicability, exceptions/conflicts, coverage/gaps, and uncertainty.
 
 The example enables compaction/pruning, limits delegation depth where supported, and caps inline tool previews at 300 lines or 24,000 bytes. The shared Build/Plan prompt lets a developer start with an ordinary request: the coordinator selects installed skills, proposes a sized behavior/spec, plan, and verification contract before editing, then proceeds on scoped implementation authorization without repeating approved decisions. Plan stays read-only and asks for Build when edits are needed. Optional planning skills are not required for a small local checklist; publishing-capable flows wait for explicit publication authorization. The selected workflow retains required verification and independent review, bounded by the task's contract rather than every installed framework's ceremonies.
 
@@ -126,7 +128,7 @@ Try a bounded task and ask the coordinator to explain its agent selections brief
 ## Customize the setup
 
 - **Different providers or models:** adapt exact bindings rather than copying provider prefixes blindly. Keep economical, standard, research, and optional Astra roles distinct; do not assume matching provider suffixes or supported variants.
-- **No stronger model:** use the standard model in the architecture/complex roles and disable `deep`. Resolve hard questions through narrower scope, evidence, and user clarification—not unavailable-model retries.
+- **No stronger model:** bind `architect` and `implement-complex` to approved confirmed models suitable for their roles in the table above. Leave `deep` disabled on a fresh setup; if a prior explicit Deep choice is now unavailable, resolve that choice with the user before changing it or proceeding with an unavailable route. Resolve hard questions through narrower scope, evidence, and user clarification—not unavailable-model retries.
 - **Different effort:** use supported agent `variant` settings. A task prompt requesting more thought does not change the API setting. Higher reasoning effort can increase output-token charges.
 - **Different workload:** adjust defaults after comparing correct completion, review findings, retries, user intervention, latency, and total billed usage. Terra or another model is an optional measured alternative, not an automatic extra tier.
 - **Existing permission restrictions:** preserve them. If they prevent part of the workflow, explain the limitation rather than silently granting more access.

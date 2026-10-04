@@ -2,7 +2,7 @@
 description: Noisy builds/tests, grouped checks, and log triage with concise evidence. No fixes; run tiny quiet checks directly.
 mode: subagent
 model: openai/gpt-6-luna
-variant: low
+variant: medium
 permission:
   task: deny
   edit: deny

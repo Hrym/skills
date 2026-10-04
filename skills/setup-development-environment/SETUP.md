@@ -2,7 +2,7 @@
 
 ## Installation versus configuration
 
-The Python installer copies skills. It does not configure OpenCode, remove plugins, install Python/Git, log in to providers, or execute downloaded skill scripts. The setup agent performs approved configuration merging separately using `setup-opencode-routing`. Project tracker/domain setup is a third explicit step, not a side effect of copying skills.
+The Python installer copies skills. It does not configure OpenCode, remove plugins, install Python/Git, log in to providers, or execute downloaded skill scripts. The setup agent performs approved configuration merging separately using `setup-opencode-routing`. That setup asks separately about opt-in Deep even if Astra workers are approved; preserve previously explicit Deep choices unless the user asks to change them. Project tracker/domain setup is a third explicit step, not a side effect of copying skills.
 
 The complete distribution is this directory: `SKILL.md`, this reference, `catalogue.json`, `scripts/install.py`, and `LICENSE`. It can be installed independently; other recommended skills come from declared source repositories, not assumed sibling directories.
 

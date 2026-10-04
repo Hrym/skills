@@ -8,7 +8,7 @@ The [user guide](setup-opencode-routing.md) covers installation and the shipped 
 
 A role describes responsibility and permissions: discover sources, implement a bounded change, run checks, or advise on architecture. A model binding selects the available model for that role. Keeping those concepts separate makes the setup portable without pretending every environment has the same capabilities.
 
-The quality-first example uses GPT-6 Luna for economical bounded work, GPT-5.6 Sol for standard coordination and ordinary implementation, GPT-6 Sol for dense-source research, and optional confirmed GPT-6 Astra for difficult design and correctness questions. These are role-specialized starting points, not a universal capability ranking. If Astra is unavailable, a fresh standard-model advisor offers separate context and independent checking—not an upgrade in underlying capability. Users prioritizing price may evaluate GPT-6 Sol for standard coordination/implementation instead, based on their own workloads.
+The quality-first example uses GPT-6 Luna `medium` for economical bounded work, GPT-6.1 Sol `medium` for coordination, `general`, and dense-source research, GPT-6.1 Sol `high` for no-Astra architecture advice and complex implementation, and confirmed GPT-6 Astra `medium` for those two worker roles in the full profile. Deep remains disabled by default even with Astra access; separate opt-in enables it as an Astra `medium` primary, never a worker. These are role-specialized starting points, not a universal capability ranking. If Astra is unavailable, the GPT-6.1 Sol advisor offers separate context and independent checking; its binding alone does not establish better outcomes than direct coordination.
 
 The coordinator selects from configured agents. It does not switch its own model merely by recommending another one. Configuration, recommendation, runtime self-report, and recorded execution metadata are different kinds of evidence.
 
@@ -48,7 +48,7 @@ Delegation moves work to another context rather than eliminating it. Net savings
 
 ## Discover cheaply; verify decisive evidence
 
-For routine contextual lookup, the coordinator reads directly. Broad straightforward local-document or web discovery goes to Luna `explore` for an evidence index. Dense specification or web-source interpretation goes directly to GPT-6 Sol `researcher` for a bounded answer and decision-ready evidence:
+For routine contextual lookup, the coordinator reads directly. Broad straightforward local-document or web discovery goes to Luna `explore` for an evidence index. Dense specification or web-source interpretation goes directly to GPT-6.1 Sol `researcher` for a bounded answer and decision-ready evidence:
 
 - The claim or question being supported.
 - URL/section or file/line range.
@@ -62,7 +62,7 @@ No compulsory Luna → researcher → coordinator → Astra chain: source volume
 
 ## Treat effort as a setting, not a capability label
 
-The supplied variants use low effort for focused discovery/log triage, medium for ordinary coordination and bounded implementation, and high for complex reasoning. They are hypotheses to evaluate on representative work, not universal optima.
+The supplied variants use medium effort for coordination, research, discovery, small implementation, verification, and opt-in Deep. Architecture and complex implementation use high effort on GPT-6.1 Sol without Astra, and medium effort on Astra in the full profile. These are hypotheses to evaluate on representative work, not universal optima.
 
 Higher effort is not a fixed token budget, free additional quality, or equivalence to a stronger model. OpenAI bills reasoning tokens as output tokens. Provider integrations may expose different variants, and a textual instruction to think harder does not demonstrate a changed API setting. See the [reasoning guide](https://developers.openai.com/api/docs/guides/reasoning) and [OpenCode configuration schema](https://opencode.ai/config.json).
 

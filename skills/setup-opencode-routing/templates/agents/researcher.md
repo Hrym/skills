@@ -1,7 +1,7 @@
 ---
 description: Read-only interpretation of dense local specifications and original web sources, with decision-ready evidence.
 mode: subagent
-model: openai/gpt-6-sol
+model: openai/gpt-6.1-sol
 variant: medium
 permission:
   task: deny

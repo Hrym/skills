@@ -68,7 +68,7 @@ For example, Matt's merge-conflict skill can be useful under a deliberate recove
 
 ## Models and cost
 
-Keep the [quality-first role bindings](setup-opencode-routing.md#what-gets-configured): GPT-5.6 Sol for standard coordination/implementation, GPT-6 Luna for bounded work, GPT-6 Sol for dense-source research, and optional Astra for difficult architecture/implementation. Same-model advice is still useful without Astra, but is not a capability upgrade.
+Keep the [quality-first role bindings](setup-opencode-routing.md#what-gets-configured): GPT-6.1 Sol `medium` for coordination, `general`, and dense-source research; GPT-6.1 Sol `high` for no-Astra architecture advice and complex implementation; GPT-6 Luna `medium` for bounded work; and confirmed Astra `medium` for architecture/complex workers in the full profile. Deep remains disabled unless separately opted in as an Astra `medium` primary. Independent advice is useful without Astra; a model binding alone does not establish better outcomes.
 
 Process controls and model selection solve different problems. More reasoning cannot supply a missing permission, and a cheaper worker is not cheaper per completed task if it repeatedly fails.
 

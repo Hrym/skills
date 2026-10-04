@@ -71,7 +71,7 @@ Restart OpenCode after installing skills. The installer has not yet changed Open
 
 Back up the affected configuration directories first, keeping any credential-bearing backups outside Git. Start OpenCode and ask:
 
-> Use setup-development-environment. The skills are installed. Configure my global OpenCode environment for the recommended workflow. GPT-5.6 Sol, GPT-6 Sol, and GPT-6 Luna are available through my provider; Astra is not. Preserve unrelated settings and show the changes before applying them. Do not run paid model probes without asking.
+> Use setup-development-environment. The skills are installed. Configure my global OpenCode environment for the recommended workflow. GPT-6.1 Sol and GPT-6 Luna are available through my provider; Astra is not. Preserve unrelated settings and show the changes before applying them. Do not run paid model probes without asking.
 
 State actual provider/model access rather than copying those names if they do not apply. The setup uses `setup-opencode-routing` to merge model bindings, prompts, variants, and permissions. It does not assume a model is usable merely because it appears in a catalogue.
 

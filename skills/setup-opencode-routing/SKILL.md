@@ -7,25 +7,27 @@ description: Use when setting up or migrating OpenCode quality-first agents, sel
 
 Bind stable roles to models confirmed for this environment. Catalog presence is not entitlement. Keep prompts concise and preserve the selected workflow's obligations. No orchestration plugin is required.
 
-Use `customize-opencode` when available. Read [SETUP.md](SETUP.md) and the relevant files under `templates/` before editing. These are a complete **GPT-5.6 Sol / GPT-6 Sol / GPT-6 Luna no-Astra example**, not an automatic installer or universal model list.
+Use `customize-opencode` when available. Read [SETUP.md](SETUP.md) and the relevant files under `templates/` before editing. These are a complete **GPT-6.1 Sol / GPT-6 Luna no-Astra example**, not an automatic installer or universal model list.
 
 ## Discover
 
 1. Establish global/project scope, provider/account, and explicit model exclusions. Read existing config, agent/command files, project overrides, and instructions; identify active config-directory/environment overrides. Preserve unrelated settings and user-authored prompts. Do not print credentials.
 2. Use `opencode models` for candidate IDs. Confirm access from the user or successful calls under the intended account. Local catalog visibility and `debug config` alone cannot confirm access. If unknown, ask one focused question; keep model-specific changes staged until confirmed. Run paid smoke tests only with permission.
-3. Select economical, standard, research, and strongest confirmed models. Do not substitute another provider/account without approval. Missing Astra is a normal profile, not an error to retry.
+3. Select economical, standard, research, and strongest confirmed models. Do not substitute another provider/account without approval. Missing Astra is a normal profile, not an error to retry. Ask separately whether to enable `deep` even when Astra access and the full worker profile are approved; confirmed access alone is not consent. Preserve an existing explicit `deep` choice unless the user requests a change.
 
 ## Bind roles
 
-| Role | Full profile | No-Astra profile |
+| Role | Full profile (confirmed Astra) | No-Astra profile |
 |---|---|---|
-| `build`, `plan`, `general` | GPT-5.6 Sol | GPT-5.6 Sol |
-| `explore`, `implement-small`, `verify` | GPT-6 Luna | GPT-6 Luna |
-| `researcher` | GPT-6 Sol | GPT-6 Sol |
-| `architect`, `implement-complex` | GPT-6 Astra, if confirmed | GPT-5.6 Sol |
-| `deep` primary | GPT-6 Astra, optional if confirmed | Disabled/omitted |
+| Top-level default, `build`, `plan` | GPT-6.1 Sol `medium` | GPT-6.1 Sol `medium` |
+| `general` | GPT-6.1 Sol `medium` | GPT-6.1 Sol `medium` |
+| `explore`, `implement-small`, `verify` | GPT-6 Luna `medium` | GPT-6 Luna `medium` |
+| `researcher` | GPT-6.1 Sol `medium` | GPT-6.1 Sol `medium` |
+| `architect` | GPT-6 Astra `medium` | GPT-6.1 Sol `high` |
+| `implement-complex` | GPT-6 Astra `medium` | GPT-6.1 Sol `high` |
+| `deep` primary | Disabled by default; GPT-6 Astra `medium` only on separate opt-in | Disabled/omitted |
 
-Names are examples; use exact confirmed provider/model IDs. If Luna is unavailable, bind its roles to the economical confirmed alternative or standard model. Do not activate the researcher without confirmed access to its model; choose an approved alternative if necessary. Same-model architecture/review gives separate context, not a capability upgrade. Never demote `general` to Luna merely because Superpowers names it. For users prioritizing price over this quality-first default, GPT-6 Sol is a possible standard coordinator/`general` alternative to GPT-5.6 Sol; confirm access and compare relevant outcomes before changing bindings.
+Names are examples; use exact confirmed provider/model IDs. If Luna is unavailable, bind its roles to the economical confirmed alternative or standard model. Do not activate a role without confirmed access to its model; choose an approved alternative if necessary. Same-model architecture/review gives separate context, not a capability upgrade. Never demote `general` to Luna merely because Superpowers names it. `deep` remains disabled by default even in the Astra worker profile, and cannot be dispatched as a worker.
 
 Keep Terra optional, not a default tier. Apply SETUP.md's effort defaults only after checking provider/model variants; unsupported settings stay omitted. Effort does not imply stronger-model equivalence or guaranteed savings.
 

@@ -1,7 +1,7 @@
 ---
 description: Complex implementation and independent review involving architecture, ambiguity, difficult bugs, or subtle correctness.
 mode: subagent
-model: openai/gpt-5.6-sol
+model: openai/gpt-6.1-sol
 variant: high
 permission:
   task: deny

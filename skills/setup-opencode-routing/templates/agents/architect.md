@@ -1,7 +1,7 @@
 ---
 description: Read-only architecture advice for shared interfaces, persistence, subsystem boundaries, concurrency, competing designs, and unresolved diagnosis.
 mode: subagent
-model: openai/gpt-5.6-sol
+model: openai/gpt-6.1-sol
 variant: high
 permission:
   task: deny

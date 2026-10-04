@@ -17,7 +17,9 @@ Use dedicated file tools for inspection/edits. Debug output can contain secrets:
 
 ## Templates and model bindings
 
-`templates/` is a **no-Astra OpenAI example** without a required orchestration plugin. It requires confirmed access to `openai/gpt-5.6-sol`, `openai/gpt-6-sol`, and `openai/gpt-6-luna` before activation. Preserve the directory structure when installing its files. Merge `opencode.jsonc`; do not replace the user's whole config. On Windows, inspect `opencode debug paths` rather than assuming the Linux configuration location.
+`templates/` is a **no-Astra OpenAI example** without a required orchestration plugin. It requires confirmed access to `openai/gpt-6.1-sol` and `openai/gpt-6-luna` before activation. Preserve the directory structure when installing its files. Merge `opencode.jsonc`; do not replace the user's whole config. On Windows, inspect `opencode debug paths` rather than assuming the Linux configuration location.
+
+GPT-6.1 Sol tool calling requires the Responses API; Chat Completions supports this model without tool calling ([OpenAI model page](https://developers.openai.com/api/docs/models/gpt-6.1-sol)). Before activating any GPT-6.1 Sol role, including Build, Plan, and researcher, verify that the intended provider adapter routes its tool calls through Responses, not just that the model appears in its catalog.
 
 | Destination | Purpose |
 |---|---|
@@ -30,9 +32,9 @@ Use dedicated file tools for inspection/edits. Debug output can contain secrets:
 | `agents/researcher.md` | Read-only dense source interpretation |
 | `agents/verify.md` | Noisy checks and evidence extraction |
 
-For a confirmed Copilot-only environment, replace every template `openai/gpt-5.6-sol`, `openai/gpt-6-sol`, and `openai/gpt-6-luna` binding with exact confirmed `github-copilot/...` IDs. Do not assume identical suffixes exist: check the catalog, access evidence, and supported variants. If a model is unavailable, ask for an approved alternative; no bundled agent model binding requires Astra.
+For a confirmed Copilot-only environment, replace every template `openai/gpt-6.1-sol` and `openai/gpt-6-luna` binding with exact confirmed `github-copilot/...` IDs. Do not assume identical suffixes exist: check the catalog, access evidence, and supported variants. If a model is unavailable, ask for an approved alternative; no bundled agent model binding requires Astra.
 
-When adapting the bundled template to the full profile, change only `architect` and `implement-complex` to the confirmed Astra ID, and optionally replace its disabled `deep` entry below. When migrating existing configuration, also update old defaults and explicit Build/Plan models to GPT-5.6 Sol.
+When adapting the bundled template to the full worker profile, change `architect` and `implement-complex` to the confirmed Astra ID at `medium` (both model and variant). No-Astra workers retain GPT-6.1 Sol `high`. Ask separately whether to enable `deep`; confirmed Astra access or approval of Astra workers is not consent to enable it. Only on explicit opt-in replace the disabled `deep` entry with the example below. Preserve previously explicit `deep` choices unless the user requests a change. When migrating existing configuration, update old defaults and explicit Build/Plan models to GPT-6.1 Sol; use GPT-6.1 Sol for no-Astra `general`, `researcher`, `architect`, and `implement-complex`.
 
 ```json
 {
@@ -40,7 +42,7 @@ When adapting the bundled template to the full profile, change only `architect` 
   "disable": false,
   "description": "Strong-model coordination for globally complex architecture and cross-cutting diagnosis.",
   "model": "openai/gpt-6-astra",
-  "variant": "high",
+  "variant": "medium",
   "prompt": "{file:./prompts/cost-aware-coordinator.md}",
   "permission": {
     "skill": {
@@ -74,7 +76,7 @@ When adapting the bundled template to the full profile, change only `architect` 
 }
 ```
 
-Keep the normal default/Build/Plan models on GPT-5.6 Sol. The user selects `deep` as a primary agent for globally complex work; workers cannot invoke it. On a restricted environment, disable an existing routing-owned `deep` and remove its stale model/prompt fields where owned, rather than leaving an unavailable model selectable. Never disable unrelated custom agents without agreement. For a price-prioritizing alternative, GPT-6 Sol can replace GPT-5.6 Sol in standard coordination/`general` after confirming access and evaluating representative work; this is not the bundled default.
+Keep the normal default/Build/Plan models on GPT-6.1 Sol. `deep` starts disabled even with confirmed Astra; after separate opt-in the user selects it as a primary agent for globally complex work, never as a worker. Preserve a prior explicit Deep choice unless the user requests a change; if its model is unavailable, ask for a decision rather than leaving a stale route active. Never disable unrelated custom agents without agreement.
 
 ## Workflow selection and migration
 
@@ -96,17 +98,17 @@ When Superpowers is deliberately retained, select that workflow explicitly rathe
 
 ## Reasoning effort and optional Terra evaluation
 
-Keep GPT-5.6 Sol for standard and no-Astra complex roles, GPT-6 Luna for economical roles, and GPT-6 Sol for the researcher, with Astra where confirmed. Terra is an optional candidate, not an automatic intermediate tier. Confirm its exact family/provider ID instead of assuming a GPT-6 Terra exists. Compare current provider pricing and representative task outcomes before adding it; a tier name or anecdote is not evidence of better value. Preserve unrelated existing Terra agents unless the user approves changing them.
+Keep GPT-6.1 Sol `medium` for coordination, `general`, and `researcher`; GPT-6.1 Sol `high` for no-Astra architecture advice and complex implementation; GPT-6 Luna `medium` for economical roles; and Astra `medium` for architecture/complex roles where confirmed and approved. Optional `deep` uses Astra `medium` only on separate opt-in. Terra is an optional candidate, not an automatic intermediate tier. Confirm its exact family/provider ID instead of assuming a GPT-6 Terra exists. Compare current provider pricing and representative task outcomes before adding it; a tier name or anecdote is not evidence of better value. Preserve unrelated existing Terra agents unless the user approves changing them.
 
 Use these **starting defaults**, not claims of optimal performance:
 
-| Role | Default variant |
-|---|---|
-| `explore`, `verify` | `low` |
-| `build`, `plan`, `general`, `implement-small`, `researcher` | `medium` |
-| `architect`, `implement-complex`, enabled `deep` | `high` |
+| Role | No-Astra variant | Full profile variant |
+|---|---|---|
+| `build`, `plan`, `general`, `researcher`, `explore`, `implement-small`, `verify` | `medium` | `medium` |
+| `architect`, `implement-complex` | GPT-6.1 Sol `high` | GPT-6 Astra `medium` |
+| `deep` primary | Disabled | Disabled until separately opted in; GPT-6 Astra `medium` |
 
-The no-Astra advisor/complex roles use GPT-5.6 Sol `high`; this is more effort within that model, not Astra-equivalent reasoning. The researcher uses GPT-6 Sol `medium` for dense interpretation; it is a specialized role, not a universal superiority claim. Broad straightforward evidence discovery stays with the single Luna explorer at `low`. The coordinator still verifies decisive evidence.
+The no-Astra advisor and complex implementation use GPT-6.1 Sol `high`; higher effort is not Astra-equivalent reasoning. The researcher uses GPT-6.1 Sol `medium` for dense interpretation; it is a specialized role, not a universal superiority claim. Broad straightforward evidence discovery stays with the single Luna explorer at `medium`. The coordinator still verifies decisive evidence.
 
 Before installation, inspect `opencode models PROVIDER --verbose` for each exact model's `variants` and their `reasoningEffort` mapping. The templates use OpenCode's agent `variant` field (JSON or Markdown frontmatter), not an assumed API parameter. Confirm it in the installed schema and `opencode debug agent NAME`. Recheck when changing providers, especially Copilot. If unsupported or unknown, omit the variant, report the provider default as unverified, and ask before adding provider-specific options. Successful parsing alone does not prove the provider honors effort.
 
@@ -116,7 +118,7 @@ Reasoning tokens are billed as output on OpenAI's reasoning API. Higher effort i
 
 For a recurring workload gap, compare Terra with Luna/Sol using the same task, tools, context, acceptance criteria, and recorded effort. Measure correct completion, retries, human intervention, latency, and total billed usage including reasoning/cache effects. Adopt only with repeatable benefit and user approval. Do not run paid comparisons without authorization.
 
-References to recheck during setup: [OpenCode agent schema](https://opencode.ai/config.json), [OpenAI reasoning guide](https://developers.openai.com/api/docs/guides/reasoning), [Terra model](https://developers.openai.com/api/docs/models/gpt-5.6-terra), [GPT-5.6 Sol model](https://developers.openai.com/api/docs/models/gpt-5.6-sol), [GPT-6 Sol model](https://developers.openai.com/api/docs/models/gpt-6-sol). Model-specific settings and prices can change.
+References to recheck during setup: [OpenCode agent schema](https://opencode.ai/config.json), [OpenAI reasoning guide](https://developers.openai.com/api/docs/guides/reasoning), [Terra model](https://developers.openai.com/api/docs/models/gpt-5.6-terra), [GPT-6.1 Sol model](https://developers.openai.com/api/docs/models/gpt-6.1-sol), [GPT-6 Luna model](https://developers.openai.com/api/docs/models/gpt-6-luna), [GPT-6 Astra model](https://developers.openai.com/api/docs/models/gpt-6-astra). Model-specific settings and prices can change.
 
 ## Permission and compatibility checks
 
@@ -127,7 +129,7 @@ References to recheck during setup: [OpenCode agent schema](https://opencode.ai/
 - `researcher`: `edit`, `bash`, and `task` denied; native read/web tools remain available under existing permissions. Review custom mutation-capable tools. This is not a filesystem sandbox.
 - `architect`: `edit`, `bash`, and `task` denied. Also deny any installed custom mutation-capable tools. This is a tool-access boundary, not a full filesystem sandbox.
 - `verify`: `edit` and `task` denied; shell available for requested checks subject to existing policy. Its no-source-edit rule is also prompt-enforced because shell commands can write.
-- `deep`: enabled only for a confirmed stronger-model profile, primary mode, same seven-worker allowlist as Build.
+- `deep`: disabled by default even with confirmed Astra; enabled only with separate explicit opt-in, primary mode, same seven-worker allowlist as Build. Preserve prior explicit choices unless changed by the user.
 - Build/Plan and enabled `deep`: selected-profile skill denials resolve as configured; permitted core skills remain callable. Tool permission checks do not establish that all bootstrap/instruction conflicts are absent.
 
 Role migration intentionally changes the task allowlists. Explain adding the read-only researcher and advisor to Plan; obtain approval if the user's requested setup does not already authorize it. Preserve unrelated stricter rules and explain resulting limitations. If native loading rejects `subagent_depth`, `tool_output`, or `compaction.prune`, consult the installed-version schema/docs before adapting. Per-worker task denial still prevents nesting; do not invent unsupported replacement settings.
@@ -146,8 +148,8 @@ Example: a source summary says a model is unavailable because a table says “Co
 
 ## Validation scenarios
 
-1. **Full:** confirmed GPT-5.6 Sol/GPT-6 Sol/Luna/Astra. GPT-5.6 Sol coordinates; Luna explores, implements small changes, and verifies; GPT-6 Sol interprets dense sources; Astra advises and handles complex work. Plan reaches only read-only workers. Optional `deep` is selectable but never a worker.
-2. **Restricted:** confirmed GPT-5.6 Sol/GPT-6 Sol/Luna through Copilot, explicitly no Astra. Preserve unrelated MCP/plugin settings. Remove unavailable references from routing-owned global/project agents, commands and defaults. Architect/complex use GPT-5.6 Sol; `deep` is disabled. Standard `general` remains GPT-5.6 Sol.
+1. **Full:** confirmed GPT-6.1 Sol/Luna/Astra. GPT-6.1 Sol `medium` coordinates and handles `general` and research; Luna `medium` explores, implements small changes, and verifies; Astra `medium` advises and handles complex work. Plan reaches only read-only workers. `deep` stays disabled unless separately opted in, then Astra `medium` is selectable as a primary, never a worker.
+2. **Restricted:** confirmed GPT-6.1 Sol/Luna through Copilot, explicitly no Astra. Preserve unrelated MCP/plugin settings. Remove unavailable references from routing-owned global/project agents, commands and defaults, resolving prior explicit Deep choices with the user. `general`, researcher, architect, and complex implementation use GPT-6.1 Sol; `deep` is disabled by default.
 3. **Unknown:** a model catalog lists Astra without access evidence. Do not activate model-specific changes or claim a working route. Ask for confirmation; paid smoke calls require permission. Static validation proves loading only.
 4. **Research:** a researcher confuses a table's documentation-status column with feature availability. Coordinator checks original row/headers before concluding. For a consequential local specification, also search omitted exceptions/version differences; report inaccessible references. A large result set alone does not trigger Astra, and no-Astra mode must not attempt it.
 5. **Effort/Terra:** a provider lists no verified `high` variant, and a user anecdote recommends Terra. Omit unsupported effort rather than inventing a mapping; preserve confirmed roles. Do not install Terra automatically or equate Luna `high` with Sol. Propose a bounded evaluation only for a relevant workload gap, with approval before paid calls.
