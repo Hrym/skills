@@ -46,6 +46,18 @@ implementation.
 
 For an implemented PR, replace proposal language with the actual behavior and checks/results. Link the authoritative intent and relevant ADR when they exist; never invent a reference or imply an unknown API is final. The explanation should still stand on its own.
 
+## Authorial voice: evidence, not a conversation recap
+
+Avoid:
+
+> The user observed a normal dispatch after giving the same corrective instruction in-session.
+
+Prefer:
+
+> A subsequent dispatch used normal spacing after an explicit instruction. This supports the clarification but does not establish the original cause or long-term reliability.
+
+The revision preserves the observation and its limits without treating the author as an assistant's conversation partner. It does not invent first-person testing. Likewise, use “orchestrator-to-subagent handoffs” when describing a general handoff problem; do not imply that it is exclusive to Deep merely because it was observed there. Keep relevant test conditions explicit without turning an observation into an unsupported generalization.
+
 ## Keep small changes small
 
 `Correct the offline installation command` can be enough for a self-explanatory typo fix. If the reason is not obvious—such as an argument changed to preserve a Windows path—explain that consequence in a short body. Do not manufacture a long problem statement.

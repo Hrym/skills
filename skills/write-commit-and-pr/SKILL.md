@@ -14,6 +14,8 @@ Read the intended change, repository instructions, relevant recent messages/temp
 
 Identify the problem and impact, desired outcome, chosen approach, and any non-obvious trade-off or compatibility consequence. Reuse established rationale. If it is missing, ask a focused question rather than invent motivation, measurements, attribution, issue references, or test results. If the change contradicts approved intent, surface the mismatch; do not rewrite history to justify it. Flag unrelated changes in the proposed scope without restructuring commits yourself.
 
+**Authorial voice:** Write commits and PR descriptions as the change's author addressing future maintainers, not as an assistant reporting on a conversation. Describe the problem, decision, and evidence directly. Avoid references to “the user,” “the assistant,” or conversational approval unless that interaction is itself relevant to the change. Prefer neutral factual wording; do not invent first-person experience or broaden evidence beyond what was observed. References to actual product users remain appropriate.
+
 ## Commit message
 
 Write a concise imperative subject describing the intended change, using the project's style. Add a blank line and explain the problem/impact, then the solution and the reason for choosing it. Include relevant constraints or verification when they explain the decision. Keep enough of the what to orient a reader, not a file-by-file diff inventory.
@@ -28,4 +30,4 @@ If checks were not run, say so with the known reason. A drafted PR body is not a
 
 ## Check and finish
 
-Can a reader understand the reason without reconstructing the conversation or reading every changed line? Does the text match the actual scope and distinguish evidence from expectations? Remove repeated diff narration and unsupported claims. Return the requested draft and any unresolved rationale question, then stop. See [examples](EXAMPLES.md) for shapes, not mandatory templates or current verification evidence.
+Can a reader understand the reason without reconstructing the conversation or reading every changed line? Does this read as a durable explanation from the author, rather than a recap of an assistant session? Does the text match the actual scope and distinguish evidence from expectations? Remove repeated diff narration and unsupported claims. Return the requested draft and any unresolved rationale question, then stop. See [examples](EXAMPLES.md) for shapes, not mandatory templates or current verification evidence.
