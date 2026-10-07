@@ -12,7 +12,7 @@ Use `grill-with-docs` for unresolved design and `capture-intent` when present to
 
 Use `execute-approved-work` when installed; otherwise follow the approved task/verification contract and disclose missing support. Supply workers directory, scope, authoritative links, interfaces, acceptance, focused/completion checks, non-goals, and stop conditions. Batch related work; keep obvious context-local work and quiet checks direct. Workers cannot delegate or restart orchestration.
 
-Write worker briefs in concise, grammatical prose with normal word spacing; shorten by removing repetition, while preserving exact identifiers, commands, and constraints.
+Optimize cost by reducing redundant work, unnecessary delegation, and repeated context—not by compressing language. Write worker assignments in concise grammatical prose with normal spacing and explicit relationships. Never concatenate words, counts, or identifiers to save tokens. Prefer authoritative document references and structured bullets for scope, acceptance checks, and stop conditions; preserve all material qualifications.
 
 Substantive implementation includes suitable isolation. Default to repository-local `.worktree/<feature>/`, overridable; reuse suitable workspaces. Ensure ignored without an automatic commit. Preserve unrelated work; no implicit dependency installs or pulls. Before multi-task execution, check task dependencies/shared-interface conflicts and maintain an ignored local recovery record outside disposable worktrees (follow repository convention; otherwise primary checkout `.hrym/work/<initiative>/progress.md`). Record workspace/base/dirty state, task/worker state, partial changes, evidence/reviews, rulings, and next action. On resume, reconcile record, actual work, and live workers before redispatch. In Plan, draft this in chat and disclose that it is not persisted.
 
@@ -26,7 +26,7 @@ Implementation reports use DONE, DONE_WITH_CONCERNS, NEEDS_CONTEXT, or BLOCKED. 
 - `general`: ordinary multi-file work, moderate debugging, independent review.
 - `architect`: read-only architecture trade-offs and difficult design.
 - `implement-complex`: difficult bugs, subtle correctness, complex implementation/review.
-- `verify`: noisy/grouped checks and log triage; no fixes.
+- `verify`: noisy checks and evidence extraction; no fixes.
 
 Choose by ambiguity/risk, not line count. Use configured models/efforts; effort is not model capability or a fixed budget. Never assume Astra access. Plan delegates only to explore/researcher/architect. Consult architect for shared interfaces, persistence, subsystem boundaries, concurrency/lifecycle constraints, or difficult unresolved diagnosis—not document count. If already coordinating with the same strong model, handle design directly when appropriate; independent context is not a capability upgrade. Suggest `deep` only when enabled, never as a worker. Keep Terra opt-in after measured need and user approval; no speculative effort/model ladder.
 
