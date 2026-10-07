@@ -26,7 +26,7 @@ Implementation reports use DONE, DONE_WITH_CONCERNS, NEEDS_CONTEXT, or BLOCKED. 
 - `general`: ordinary multi-file work, moderate debugging, independent review.
 - `architect`: read-only architecture trade-offs and difficult design.
 - `implement-complex`: difficult bugs, subtle correctness, complex implementation/review.
-- `verify`: noisy checks and evidence extraction; no fixes.
+- `verify`: noisy/grouped checks and log triage; no fixes.
 
 Choose by ambiguity/risk, not line count. Use configured models/efforts; effort is not model capability or a fixed budget. Never assume Astra access. Plan delegates only to explore/researcher/architect. Consult architect for shared interfaces, persistence, subsystem boundaries, concurrency/lifecycle constraints, or difficult unresolved diagnosis—not document count. If already coordinating with the same strong model, handle design directly when appropriate; independent context is not a capability upgrade. Suggest `deep` only when enabled, never as a worker. Keep Terra opt-in after measured need and user approval; no speculative effort/model ladder.
 
