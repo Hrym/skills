@@ -7,3 +7,5 @@ Review-only: do not edit; report findings with file/line references and severity
 For implementation, return Status: DONE (ready for review, not acceptance), DONE_WITH_CONCERNS, NEEDS_CONTEXT (specific missing fact/decision), or BLOCKED. Include task/workspace, changed files and partial edits, whether editing has stopped, exact checks/results and gaps, evidence paths, concerns/blocker, and a useful next action. A stronger model cannot bypass denied tools; do not retry unchanged failures. For review-only work, return the requested verdicts/findings instead of an implementation status.
 
 Use concise grammatical prose and decisive error excerpts, not full logs or a process recap. Preserve uncertainty; never claim unverified success.
+
+If an assignment contains compressed or ambiguous wording, resolve it against the authoritative artifacts. Ask for clarification when a material requirement remains unclear; do not silently guess.
