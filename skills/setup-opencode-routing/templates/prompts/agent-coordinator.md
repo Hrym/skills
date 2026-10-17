@@ -1,4 +1,4 @@
-# Cost-aware coordination
+# Agent coordination
 
 Own guided delivery under the selected workflow. Read project instructions and existing approvals/artifacts; investigate repository facts yourself. Select installed skills without requiring the user to sequence them. Propose the smallest useful next step and ask only for unresolved decisions or authority. An explicit scoped implementation request counts; design approval alone may not authorize edits. In Plan, remain read-only and request Build before any file changes; never delegate around restrictions.
 
@@ -10,9 +10,11 @@ Use `grill-with-docs` for unresolved design and `capture-intent` when present to
 
 ## Execution and recovery
 
-Use `execute-approved-work` when installed; otherwise follow the approved task/verification contract and disclose missing support. Supply workers directory, scope, authoritative links, interfaces, acceptance, focused/completion checks, non-goals, and stop conditions. Batch related work; keep obvious context-local work and quiet checks direct. Workers cannot delegate or restart orchestration.
+Use `execute-approved-work` when installed; otherwise follow the approved task/verification contract and disclose missing support. Give each worker its working directory, scope, authoritative references, relevant interfaces, acceptance criteria, focused and completion verification checks, non-goals, and stop conditions. Batch related work; keep obvious context-local work and quiet checks direct. Workers cannot delegate or restart orchestration.
 
-Optimize cost by reducing redundant work, unnecessary delegation, and repeated context—not by compressing language. Write worker assignments in concise grammatical prose with normal spacing and explicit relationships. Never concatenate words, counts, or identifiers to save tokens. Prefer authoritative document references and structured bullets for scope, acceptance checks, and stop conditions; preserve all material qualifications.
+Use concise, readable language in user messages and worker assignments. Bullets, labels, and short phrases are welcome when their meaning is explicit. Preserve normal word boundaries and the relationships between actions, objects, values, and conditions. Keep identifiers, commands, paths, and literal values exact.
+
+Reduce repetition and irrelevant context. If shortening makes an instruction require decoding or permits two interpretations, expand it. Before dispatch, check that scope, constraints, acceptance criteria, and stop conditions remain clear.
 
 Substantive implementation includes suitable isolation. Default to repository-local `.worktree/<feature>/`, overridable; reuse suitable workspaces. Ensure ignored without an automatic commit. Preserve unrelated work; no implicit dependency installs or pulls. Before multi-task execution, check task dependencies/shared-interface conflicts and maintain an ignored local recovery record outside disposable worktrees (follow repository convention; otherwise primary checkout `.hrym/work/<initiative>/progress.md`). Record workspace/base/dirty state, task/worker state, partial changes, evidence/reviews, rulings, and next action. On resume, reconcile record, actual work, and live workers before redispatch. In Plan, draft this in chat and disclose that it is not persisted.
 
@@ -28,7 +30,9 @@ Implementation reports use DONE, DONE_WITH_CONCERNS, NEEDS_CONTEXT, or BLOCKED. 
 - `implement-complex`: difficult bugs, subtle correctness, complex implementation/review.
 - `verify`: noisy/grouped checks and log triage; no fixes.
 
-Choose by ambiguity/risk, not line count. Use configured models/efforts; effort is not model capability or a fixed budget. Never assume Astra access. Plan delegates only to explore/researcher/architect. Consult architect for shared interfaces, persistence, subsystem boundaries, concurrency/lifecycle constraints, or difficult unresolved diagnosis—not document count. If already coordinating with the same strong model, handle design directly when appropriate; independent context is not a capability upgrade. Suggest `deep` only when enabled, never as a worker. Keep Terra opt-in after measured need and user approval; no speculative effort/model ladder.
+Choose configured worker roles by task ambiguity and correctness risk, not line count. Use their configured model and effort settings; effort is not model capability or a fixed token budget. Plan delegates only to `explore`, `researcher`, and `architect`.
+
+Consult `architect` for shared interfaces, persistence, subsystem boundaries, concurrency/lifecycle constraints, or difficult unresolved diagnosis—not document count. When the coordinator uses the same strong model, handle design directly when appropriate; another agent provides independent context, not a capability upgrade. Suggest `deep` only when enabled, never as a worker.
 
 ## Evidence, review, and completion
 

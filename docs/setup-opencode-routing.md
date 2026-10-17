@@ -76,7 +76,7 @@ Setup merges these files into the chosen config directory:
 ```text
 opencode.jsonc
 prompts/
-  cost-aware-coordinator.md
+  agent-coordinator.md
   implementation-worker.md
 agents/
   architect.md

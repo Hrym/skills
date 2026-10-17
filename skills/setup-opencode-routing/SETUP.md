@@ -13,7 +13,9 @@
 | Skill installation | `~/.agents/skills/setup-opencode-routing/` |
 | Authoritative schema | `https://opencode.ai/config.json` |
 
-Use dedicated file tools for inspection/edits. Debug output can contain secrets: inspect selectively and never paste credentials into reports. Check `OPENCODE_CONFIG`, `OPENCODE_CONFIG_DIR`, and project/global scopes without dumping environment variables.
+Use dedicated read/search tools for inspection and patch/edit tools for authored content changes. For unchanged file or directory copies and moves, use native filesystem operations or the approved installer when tool permissions allow. Check source/destination scope, overwrite risks, and relevant metadata first; verify the result with diffs or hashes rather than loading every file into model context. If higher-priority tool instructions prevent an appropriate operation, report the restriction instead of reconstructing a whole directory through patches.
+
+Debug output can contain secrets: inspect selectively and never paste credentials into reports. Check `OPENCODE_CONFIG`, `OPENCODE_CONFIG_DIR`, and project/global scopes without dumping environment variables.
 
 ## Templates and model bindings
 
@@ -24,7 +26,7 @@ GPT-6.1 Sol tool calling requires the Responses API; Chat Completions supports t
 | Destination | Purpose |
 |---|---|
 | `opencode.jsonc` | Defaults, existing built-ins, worker allowlists, context controls |
-| `prompts/cost-aware-coordinator.md` | Shared Build/Plan coordination policy |
+| `prompts/agent-coordinator.md` | Shared Build/Plan coordination policy |
 | `prompts/implementation-worker.md` | Standard worker contract |
 | `agents/implement-small.md` | Economical implementation |
 | `agents/implement-complex.md` | Strongest available implementation |
@@ -43,7 +45,7 @@ When adapting the bundled template to the full worker profile, change `architect
   "description": "Strong-model coordination for globally complex architecture and cross-cutting diagnosis.",
   "model": "openai/gpt-6-astra",
   "variant": "medium",
-  "prompt": "{file:./prompts/cost-aware-coordinator.md}",
+  "prompt": "{file:./prompts/agent-coordinator.md}",
   "permission": {
     "skill": {
       "ask-matt": "deny",
@@ -77,6 +79,18 @@ When adapting the bundled template to the full worker profile, change `architect
 ```
 
 Keep the normal default/Build/Plan models on GPT-6.1 Sol. `deep` starts disabled even with confirmed Astra; after separate opt-in the user selects it as a primary agent for globally complex work, never as a worker. Preserve a prior explicit Deep choice unless the user requests a change; if its model is unavailable, ask for a decision rather than leaving a stale route active. Never disable unrelated custom agents without agreement.
+
+## Upgrade note: coordinator prompt filename
+
+Apply this migration only when an active configuration still references `cost-aware-coordinator.md`. The replacement is `agent-coordinator.md`, headed **Agent coordination**. Its readable-concision guidance permits clear bullets and short phrases while preserving word boundaries, relationships, and exact technical values. Model-specific setup guidance remains here rather than in the runtime coordinator.
+
+1. Locate the effective configuration and prompt files for each affected project, including global/project overrides, inline prompts, and Markdown agent definitions. Inspect actual references rather than assuming the template directory is the active installation.
+2. Back up the owned configuration and prompt files outside discovery. The repository prompt is authoritative. Compare against the previously installed source revision where available; for local edits or unexplained differences, ask whether to replace with the repository version, approve an explicit override, or update the repository first. Do not silently merge local additions.
+3. Install the approved repository prompt as `agent-coordinator.md` beside the active configuration's other prompts and verify content equality, recording any explicit override. Update owned references for Build, Plan, and enabled `deep` from `{file:./prompts/cost-aware-coordinator.md}` to `{file:./prompts/agent-coordinator.md}`, adapting paths to the existing layout. Do not enable `deep` or change models, efforts, or permissions as part of this rename.
+4. Run `opencode debug config` and `opencode debug agent NAME` from each affected project. Confirm the new prompt content is resolved and bindings/permissions are unchanged. Check all active configuration scopes for remaining references to the old file. Only after successful verification and cleanup approval, remove the obsolete owned prompt; leave unrelated files and historical records alone.
+5. Restart OpenCode and start a fresh conversation. A successful load verifies wiring, not the absence of word concatenation. Observe actual assignments over longer sessions before claiming the gradual behavior is fixed. If migration fails, retain the backup and old prompt, and restore the matching configuration/prompt pair without overwriting subsequent edits.
+
+If the new filename is already active, verify its content and references; do not repeat the rename. For a repository-managed prompt copied inline, apply the source comparison and approval rules above even though no filename migration is needed. Ask before replacing a differing inline copy or changing another owned agent reference; leave unrelated user-authored prompts alone. Updating a skill's bundled templates alone does not migrate active application configuration.
 
 ## Workflow selection and migration
 

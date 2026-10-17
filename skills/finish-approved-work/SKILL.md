@@ -19,7 +19,7 @@ Before any Git mutation, read [integration evidence](INTEGRATION.md) for scope i
 ## Perform only the chosen operation
 
 - **Keep:** report branch/workspace and state; no hidden commits, staging, publication, or cleanup.
-- **Commit only:** inspect the full proposed index, commit only the authorized change with its grounded explanation, and report the result. This authorizes no merge, push, or cleanup; a remote target is not required.
+- **Commit only:** inspect the complete proposed index, commit the authorized change with a grounded message, and report the result. No merge, push, or cleanup is authorized; a remote target is not required.
 - **Merge/squash locally:** integrate only intended changes into the confirmed target. Inspect any proposed commit's exact staged diff first. Use `write-commit-and-pr` for the feature-level rationale draft: a squash explains the entire feature against the correct base, never just the last worker commit. Reuse an approved message if scope is unchanged; otherwise update it. Record resulting commit/tree identities and review the integrated diff.
 - **Push/create PR:** after applicable checks, push only when approved, to the confirmed remote/ref. Examine all included commits and the full target-relative diff; use the available appropriate forge tool. Drafting a body creates nothing; report a PR URL only after confirmed creation. Preserve the workspace for ongoing review unless removal was requested and cleanup gates are met.
 

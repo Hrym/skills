@@ -1,6 +1,6 @@
 ---
 name: setup-opencode-routing
-description: Use when setting up or migrating OpenCode quality-first agents, selected-workflow routing, or an environment with different provider access or no Astra. Applies to OpenCode configuration, not ordinary application development.
+description: Use when configuring or migrating OpenCode agent roles, workflow routing, or model/provider bindings. Not for ordinary application development.
 ---
 
 # Set up OpenCode routing

@@ -14,7 +14,7 @@ Read the intended change, repository instructions, relevant recent messages/temp
 
 Identify the problem and impact, desired outcome, chosen approach, and any non-obvious trade-off or compatibility consequence. Reuse established rationale. If it is missing, ask a focused question rather than invent motivation, measurements, attribution, issue references, or test results. If the change contradicts approved intent, surface the mismatch; do not rewrite history to justify it. Flag unrelated changes in the proposed scope without restructuring commits yourself.
 
-**Authorial voice:** Write commits and PR descriptions as the change's author addressing future maintainers, not as an assistant reporting on a conversation. Describe the problem, decision, and evidence directly. Avoid references to “the user,” “the assistant,” or conversational approval unless that interaction is itself relevant to the change. Prefer neutral factual wording; do not invent first-person experience or broaden evidence beyond what was observed. References to actual product users remain appropriate.
+**Authorial voice:** Address future maintainers as the change's author. Explain the problem, decision, and evidence directly, using neutral factual wording. Mention assistant/user interactions only when relevant to the change; references to actual product users are fine. Do not invent personal experience or extend claims beyond observed evidence.
 
 ## Commit message
 

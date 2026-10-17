@@ -10,7 +10,7 @@ Keep the **why** legible without the conversation. This is a purpose anchor, not
 
 ## Locate the anchor
 
-Read the task, approved solution brief/spec introduction, glossary, and ADRs. If an existing artifact already conveys purpose, outcome, boundaries, and tradeoffs, link it; do not require a second `intent.md`. A trivial change may need only its issue/task rationale. Otherwise use the project's convention, or default to `docs/intent/<slug>.md`. Link authoritative specs, ADRs, and tasks rather than reproducing them. ADRs preserve selected decisions and historical rationale; glossaries define terms, not overarching purpose.
+Read the task, approved brief/spec introduction, glossary, and ADRs. Reuse and link an artifact that explains purpose, outcome, boundaries, and tradeoffs; a trivial change may need only its task rationale. Otherwise follow the project's location convention, defaulting to `docs/intent/<slug>.md`. Link authoritative specs, ADRs, and tasks instead of copying them. ADRs explain decisions and their history; glossaries define terms, not overall purpose.
 
 ## Write the minimum useful brief
 

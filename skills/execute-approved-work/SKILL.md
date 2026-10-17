@@ -28,7 +28,7 @@ Give brief user progress at meaningful task, decision, and blocker transitions, 
 
 ## Review the actual change
 
-Obtain independent standards/spec review at meaningful boundaries, including consequential configuration/documentation. Review shared interfaces early when needed; multi-task delivery requires final integrated review. Use `code-review` for committed ranges with exact base/head. Otherwise snapshot intended committed, staged, unstaged, and relevant untracked changes with exclusions; `base...HEAD` omits dirty work. Never auto-commit for review.
+Obtain independent standards/spec review at meaningful boundaries, including consequential configuration and documentation changes. Review shared interfaces early when needed and the integrated result after multi-task work. For committed ranges, use `code-review` with exact base/head. Otherwise snapshot all intended committed, staged, unstaged, and relevant untracked changes, with explicit exclusions. `base...HEAD` omits dirty work; do not commit merely to enable review.
 
 Supply contract and source evidence. Adjudicate disputed findings before fixes; distinguish blockers from suggestions. Re-review fixes and affected checks, not unchanged work repeatedly. No fixed retry count or review churn.
 

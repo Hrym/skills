@@ -9,7 +9,7 @@
     "build": {
       "model": "openai/gpt-6.1-sol",
       "variant": "medium",
-      "prompt": "{file:./prompts/cost-aware-coordinator.md}",
+      "prompt": "{file:./prompts/agent-coordinator.md}",
       "permission": {
         "skill": {
           "ask-matt": "deny",
@@ -43,7 +43,7 @@
     "plan": {
       "model": "openai/gpt-6.1-sol",
       "variant": "medium",
-      "prompt": "{file:./prompts/cost-aware-coordinator.md}",
+      "prompt": "{file:./prompts/agent-coordinator.md}",
       "permission": {
         "skill": {
           "ask-matt": "deny",

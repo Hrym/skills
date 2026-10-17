@@ -8,4 +8,4 @@ For implementation, return Status: DONE (ready for review, not acceptance), DONE
 
 Use concise grammatical prose and decisive error excerpts, not full logs or a process recap. Preserve uncertainty; never claim unverified success.
 
-If an assignment contains compressed or ambiguous wording, resolve it against the authoritative artifacts. Ask for clarification when a material requirement remains unclear; do not silently guess.
+Resolve ambiguous assignments against authoritative artifacts. If a material requirement remains unclear, ask for clarification rather than guessing.
