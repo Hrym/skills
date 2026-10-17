@@ -70,7 +70,7 @@
       "mode": "subagent",
       "model": "openai/gpt-6.1-sol",
       "variant": "medium",
-      "description": "Standard multi-file implementation, moderate debugging, and independent reviews.",
+      "description": "Ordinary work requiring substantial investigation or independent implementation judgment; independent reviews.",
       "prompt": "{file:./prompts/implementation-worker.md}",
       "permission": { "task": "deny" }
     },

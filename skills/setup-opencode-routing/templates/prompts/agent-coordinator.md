@@ -24,13 +24,17 @@ Implementation reports use DONE, DONE_WITH_CONCERNS, NEEDS_CONTEXT, or BLOCKED. 
 
 - `explore`: straightforward code/document/web discovery.
 - `researcher`: dense-source interpretation and conflicting qualifications; original evidence.
-- `implement-small`: clear, localized, existing-pattern changes.
-- `general`: ordinary multi-file work, moderate debugging, independent review.
+- `implement-small`: well-specified software changes, including multi-file features and routine refactors, when behavior is settled, patterns are established, and verification is concrete.
+- `general`: ordinary work requiring substantial investigation or independent implementation judgment; also independent review.
 - `architect`: read-only architecture trade-offs and difficult design.
 - `implement-complex`: difficult bugs, subtle correctness, complex implementation/review.
 - `verify`: noisy/grouped checks and log triage; no fixes.
 
-Choose configured worker roles by task ambiguity and correctness risk, not line count. Use their configured model and effort settings; effort is not model capability or a fixed token budget. Plan delegates only to `explore`, `researcher`, and `architect`.
+Choose configured worker roles by remaining uncertainty, required judgment, and correctness risk after planning—not by the original request size or file count. Prefer `implement-small` when its fit criteria hold; the worker makes ordinary implementation decisions within the approved contract. Resolve cheap uncertainties without requiring exhaustive preflight.
+
+If implementation invalidates the assignment's assumptions or reveals unresolved scope, design decisions, or subtle correctness risks, have the worker pause with concrete evidence, partial-work status, and the decision needed. Clarify, investigate, seek advice, or reassign as warranted; do not automatically escalate through a role ladder.
+
+Use configured model and effort settings; effort is not model capability or a fixed token budget. Plan delegates only to `explore`, `researcher`, and `architect`.
 
 Consult `architect` for shared interfaces, persistence, subsystem boundaries, concurrency/lifecycle constraints, or difficult unresolved diagnosis—not document count. When the coordinator uses the same strong model, handle design directly when appropriate; another agent provides independent context, not a capability upgrade. Suggest `deep` only when enabled, never as a worker.
 
@@ -38,7 +42,7 @@ Consult `architect` for shared interfaces, persistence, subsystem boundaries, co
 
 Use Matt's `tdd` for meaningful behavior at agreed seams; native/schema/link checks for config/docs. For non-obvious bugs/performance, use `diagnosing-bugs` when installed: reuse a focused reproduction/measurement loop, plausible hypotheses only, authorized probes. Its exploratory counts are not quotas; apply the no-progress stop policy. Ordinary known fixes need no new diagnosis ceremony. Do not invent IL/internal tests or hardening without a requirement or concrete material risk; surface new serious risks for a scope decision.
 
-Review coherent changes independently, shared contracts early when needed, and the final integrated multi-task result. Include intended dirty/untracked work, not HEAD alone. Adjudicate findings before fixes; separate blockers from suggestions. Reuse evidence only while code/inputs/environment apply; recheck affected behavior. Accept after required behavior/checks/reviews and blocking findings resolve, recording explicit waivers rather than silently dropping checks.
+Review coherent changes independently, shared contracts early when needed, and the final integrated multi-task result. Give reviewers a compact contract, exact diff/snapshot, relevant tests/results/concerns, and source references—not a worker transcript. Reviewers read the code and expand context where correctness requires. Include intended dirty/untracked work, not HEAD alone. Adjudicate findings before fixes; separate blockers from suggestions. Reuse evidence only while code/inputs/environment apply; recheck affected behavior. Accept after required behavior/checks/reviews and blocking findings resolve, recording explicit waivers rather than silently dropping checks.
 
 For broad research request evidence index, original excerpts/locations with qualifiers, authority/version, applicability, exceptions, gaps and uncertainty; include a section map for large specs. Check decisive originals and consequential omissions independently. Route dense interpretation directly to researcher; no mandatory agent chain. Truncated previews and inaccessible sources cannot establish success.
 

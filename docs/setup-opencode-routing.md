@@ -60,10 +60,10 @@ The role structure stays stable while model assignments adapt to your provider a
 | Agent | Purpose | Quality-first (no Astra) | Optional stronger profile | Effort default |
 |---|---|---|---|---|
 | Top-level default, `build`, `plan` | Coordinate work and integrate results | GPT-6.1 Sol | GPT-6.1 Sol | `medium` for agents |
-| `general` | Standard implementation and independent review | GPT-6.1 Sol | GPT-6.1 Sol | `medium` |
+| `general` | Work requiring substantial investigation or independent implementation judgment; independent review | GPT-6.1 Sol | GPT-6.1 Sol | `medium` |
 | `explore` | Broad read-only code, document, and web discovery | GPT-6 Luna | GPT-6 Luna | `medium` |
 | `researcher` | Read-only dense local-specification/web-source interpretation | GPT-6.1 Sol | GPT-6.1 Sol | `medium` |
-| `implement-small` | Clear, localized, existing-pattern changes | GPT-6 Luna | GPT-6 Luna | `medium` |
+| `implement-small` | Well-specified changes, including multi-file features and routine refactors, with established patterns and concrete verification | GPT-6 Luna | GPT-6 Luna | `medium` |
 | `verify` | Noisy builds/tests and log triage; no fixes | GPT-6 Luna | GPT-6 Luna | `medium` |
 | `architect` | Read-only design advice | GPT-6.1 Sol | GPT-6 Astra, if confirmed | `high` without Astra; `medium` with Astra |
 | `implement-complex` | Difficult implementation, diagnosis, and review | GPT-6.1 Sol | GPT-6 Astra, if confirmed | `high` without Astra; `medium` with Astra |
