@@ -10,6 +10,26 @@
       "url": "https://github.com/mattpocock/skills.git",
       "ref": "c55ee46073ed923f86ce59a5eb3b6d895095d1b7",
       "license": "LICENSE"
+    },
+    "matt-optional": {
+      "url": "https://github.com/mattpocock/skills.git",
+      "ref": "49dd158d1076134a641b33efb035946536778336",
+      "license": "LICENSE"
+    },
+    "github-awesome-copilot": {
+      "url": "https://github.com/github/awesome-copilot.git",
+      "ref": "cb64ad12e32737ae764becd6885462e9b4c7cb00",
+      "license": "LICENSE"
+    },
+    "anthropic": {
+      "url": "https://github.com/anthropics/skills.git",
+      "ref": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "license": "skills/frontend-design/LICENSE.txt"
+    },
+    "microsoft-playwright-cli": {
+      "url": "https://github.com/microsoft/playwright-cli.git",
+      "ref": "b85c7a736bb473bf55b584e54a09ffa698d6d871",
+      "license": "LICENSE"
     }
   },
   "skills": {
@@ -114,11 +134,42 @@
       "path": "skills/engineering/to-tickets",
       "description": "Decompose larger work into approved, dependency-aware vertical slices.",
       "requires": ["setup-matt-pocock-skills", "domain-modeling"]
-    }
+    },
+    "wait-what": {"source":"matt-optional","path":"skills/productivity/wait-what","description":"Stop. That last message did not land: re-pitch it.","requires":[]},
+    "research": {"source":"matt-optional","path":"skills/engineering/research","description":"Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo.","requires":[]},
+    "research-handoff": {
+      "source": "hrym",
+      "path": "skills/research-handoff",
+      "description": "Prepare or reconcile a human-mediated research brief with optional repository context across environments.",
+      "requires": []
+    },
+    "prototype": {"source":"matt-optional","path":"skills/engineering/prototype","description":"Build a throwaway prototype to answer a design question.","requires":[]},
+    "wayfinder": {"source":"matt-optional","path":"skills/engineering/wayfinder","description":"Plan a huge chunk of work as a shared map of decision tickets, and resolve them one at a time until the way to the destination is clear.","requires":["research","prototype","grilling","domain-modeling","setup-matt-pocock-skills"]},
+    "dotnet-best-practices": {"source":"github-awesome-copilot","path":"skills/dotnet-best-practices","description":"Apply .NET best practices.","requires":[]},
+    "csharp-async": {"source":"github-awesome-copilot","path":"skills/csharp-async","description":"Write and review asynchronous C# code.","requires":[]},
+    "aspnet-minimal-api-openapi": {"source":"github-awesome-copilot","path":"skills/aspnet-minimal-api-openapi","description":"Build ASP.NET Core Minimal APIs with OpenAPI.","requires":[]},
+    "csharp-xunit": {"source":"github-awesome-copilot","path":"skills/csharp-xunit","description":"Write and maintain C# tests with xUnit.","requires":[]},
+    "java-junit": {"source":"github-awesome-copilot","path":"skills/java-junit","description":"Write Java tests using JUnit.","requires":[]},
+    "javascript-typescript-jest": {"source":"github-awesome-copilot","path":"skills/javascript-typescript-jest","description":"Write JavaScript and TypeScript tests using Jest.","requires":[]},
+    "documentation-writer": {"source":"github-awesome-copilot","path":"skills/documentation-writer","description":"Create clear, useful documentation.","requires":[]},
+    "frontend-design": {"source":"anthropic","path":"skills/frontend-design","description":"Create distinctive, production-grade frontend interfaces.","requires":[]},
+    "playwright-cli": {"source":"microsoft-playwright-cli","path":"skills/playwright-cli","description":"Interact with web pages using Playwright CLI.","requires":[]},
+    "writing-shape": {"source":"matt-optional","path":"skills/in-progress/writing-shape","description":"Shape raw material into an article, paragraph by paragraph.","requires":[]}
   },
   "groups": {
     "core": ["setup-development-environment"],
     "planning": ["to-spec", "to-tickets"],
-    "authoring": ["writing-for-agents"]
+    "authoring": ["writing-for-agents"],
+    "communication": ["wait-what"],
+    "research": ["research", "research-handoff"],
+    "large-planning": ["wayfinder"],
+    "dotnet": ["dotnet-best-practices", "csharp-async", "aspnet-minimal-api-openapi"],
+    "dotnet-testing": ["csharp-xunit"],
+    "java-testing": ["java-junit"],
+    "js-ts-testing": ["javascript-typescript-jest"],
+    "frontend-design": ["frontend-design"],
+    "browser-testing": ["playwright-cli"],
+    "documentation": ["documentation-writer"],
+    "long-form-writing": ["writing-shape"]
   }
 }

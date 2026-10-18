@@ -12,13 +12,13 @@ Install only the selected skills; configure the application as a separate review
 
 Read [SETUP.md](SETUP.md) and `catalogue.json`. Establish destination scope, sources, network access, available models, and existing skill/plugin/configuration locations. Use local discovery to settle facts; ask about choices. Never expose credentials or equate catalog visibility with model entitlement.
 
-Recommend `core`; add `planning` for specs/tickets and `authoring` when maintaining skills. Authoring contains Matt's `writing-for-agents`, not another orchestration/TDD framework. The catalogue includes required resources. Do not install entire collections by default. Skill installation alone configures neither model access nor project conventions.
+Recommend `core`. Offer optional groups only for the relevant task; the catalogue and its selection preview list exact contents and dependencies. Explicit `--group` selections do not implicitly include core. `--all-groups` selects every defined group plus dependencies; preview and review it because catalogue growth changes the selection. Do not install every group by default. Skill installation alone configures neither model access nor project conventions.
 
 ## Install skill files
 
 Use `scripts/install.py --list`, then preview the selected groups and sources without `--apply`. Use the same Python 3.10+ executable for all commands. Paths are relative to this skill for the script/catalogue, not the current directory. Obtain approval before `--apply` or `--replace`.
 
-Offline: supply repository roots with `--source ID=PATH --offline`; missing sources fail without fetching. Do not silently change to online mode. Online: use the catalogue's revisions and preconfigured Git access. A local source is reported as unverified, not falsely pinned. Preserve licenses. Differing installations conflict by default; explicit replacement makes backups outside discovery paths. Show actual actions and backup paths; never silently remove unrelated skills.
+Offline means the installer does not fetch skill sources; it does not mean the host has no public Internet, and does not restrict approved internal trackers, Git/package services, or model endpoints. Supply a complete source root for every selected source with `--source ID=PATH --offline`; missing sources fail without fetching. Exported source roots need no `.git` directory. Do not silently change to online mode. Online: use the catalogue's revisions and preconfigured Git access. A local source is reported as unverified, not falsely pinned. Preserve licenses. Differing installations conflict by default; explicit replacement makes backups outside discovery paths. Show actual actions and backup paths; never silently remove unrelated skills.
 
 ## Configure the selected workflow
 

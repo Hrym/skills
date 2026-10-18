@@ -23,16 +23,13 @@ The catalogue resolves the core group to fourteen skills:
 
 An installed capability is not a mandatory stage for every change. An obvious bug with a reproduction can go through ordinary execution; a hard-to-explain failure may need diagnosis. A typo does not need an architecture interview. An existing adequate specification can already be the intent anchor.
 
-## Additional catalogue groups
+## Optional catalogue groups
 
-| Group | Contents | Use |
-|---|---|---|
-| `planning` | `to-spec`, `to-tickets` and dependencies | Larger work benefiting from explicit specs/tasks; publishing requires authorization |
-| `authoring` | Matt's `writing-for-agents` and its resources | Maintaining skills and agent-facing instructions |
+Exact optional group contents, including specialist technology groups, are maintained in the [optional skills guide](optional-skills.md). These groups add capabilities rather than changing this profile's phase ownership or role selection. `--all-groups` selects every defined group plus dependencies; preview and review it deliberately as catalogue growth changes its scope.
 
 For this skills repository, `core` plus `authoring` is a useful selection. No Superpowers authoring or additional TDD dependency is needed. Use `--group core --group authoring`; optional groups do not implicitly include core. See [setup](setup-development-environment.md).
 
-Other tools—prototyping, triage, long-horizon planning, research reports, learning aids, and PM techniques—may be valuable for particular work, but are not promised by the shipped catalogue merely because they exist upstream. Review their prerequisites, scope, side effects, platform support, and conflicting owners before adding them.
+Specialist groups are opt-in, not default workflow stages. Review their prerequisites, scope, side effects, platform support, and conflicts before adding them.
 
 ## Behavior you can rely on asking for
 

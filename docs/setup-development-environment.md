@@ -7,7 +7,7 @@ The setup has three distinct steps: **install skill files**, **configure OpenCod
 - Python **3.10 or newer**, with no additional Python packages.
 - OpenCode for agent use. The existing routing template has been exercised with OpenCode 1.18.30; validate the installed version's supported fields.
 - Confirmed access to suitable models through your chosen provider. You do not need Astra; see [routing profiles](setup-opencode-routing.md#what-gets-configured).
-- Git for downloading sources. Local exported sources need neither Git nor network access for copying.
+- Git for online source retrieval. Complete local source exports need neither Git nor source-network access for copying.
 - On Windows, Git Bash is available, but **Python must be installed separately**.
 
 Check from a terminal:
@@ -30,7 +30,7 @@ Use the working Python 3.10+ command consistently below. No administrator privil
 
 ## Obtain the sources
 
-Start from a trusted checkout or export of this repository. Commands below run from its root. The catalogue uses the local Hrym checkout automatically when it can identify it; otherwise supply `--source hrym=PATH`. Its remote Hrym URL uses SSH and may require repository access. Matt's repository is fetched at a pinned revision.
+Start from a trusted checkout or export of this repository. Commands below run from its root. The catalogue uses the local Hrym checkout automatically when it can identify it; otherwise supply `--source hrym=PATH`. Its remote Hrym URL uses SSH and may require repository access. Optional skills come from four pinned upstream roots, with Matt's optional revision separate from the existing Matt core revision.
 
 For restricted environments, use [offline installation](offline-and-updates.md#offline-installation) instead. Offline copying does not provide offline model inference.
 
@@ -41,7 +41,7 @@ python3 skills/setup-development-environment/scripts/install.py --list
 python3 skills/setup-development-environment/scripts/install.py
 ```
 
-On Windows, replace `python3` with `python` or `py -3`. The default `core` group resolves to fourteen skills, covering setup/routing, intent, design, bounded execution and diagnosis, verification/review, change writing, and authorized finishing. The [recommended profile](recommended-profile.md) explains ownership; the [catalogue](../skills/setup-development-environment/catalogue.json) is the authoritative selection/dependency map.
+On Windows, replace `python3` with `python` or `py -3`. The default `core` group resolves to fourteen skills, covering setup/routing, intent, design, bounded execution and diagnosis, verification/review, change writing, and authorized finishing. The catalogue contains 32 skills in 14 groups. The [recommended profile](recommended-profile.md) explains ownership; the [catalogue](../skills/setup-development-environment/catalogue.json) is the authoritative selection/dependency map.
 
 The optional `planning` group adds specification and ticket synthesis. Select both explicitly:
 
@@ -49,11 +49,11 @@ The optional `planning` group adds specification and ticket synthesis. Select bo
 python3 skills/setup-development-environment/scripts/install.py --group core --group planning
 ```
 
-If any `--group` is supplied, only those groups and their dependencies are selected; `core` is not added implicitly. Source directories are copied in full, with the source license. Unrelated installed skills are not removed.
+If any `--group` is supplied, only those groups and their dependencies are selected; `core` is not added implicitly. Source directories are copied in full, with the source license. Unrelated installed skills are not removed. See the [optional groups guide](optional-skills.md) for all exact group names and purposes.
 
-For skill maintenance, use `--group core --group authoring` to add Matt's `writing-for-agents`. The authoring group introduces no Superpowers/TDD or renderer dependency. [Improvement proposals](improving-skills.md) are grounded in observed evidence and expected reuse; authoring is not an automatic phase after every task.
+`--all-groups` selects all defined groups and dependencies, not an implicit default for routine installation. Review `--list` and the preview because future catalogue growth changes its scope. Add `--apply` only after review. [Improvement proposals](improving-skills.md) are grounded in observed evidence and expected reuse; authoring is not an automatic phase after every task.
 
-Preview is the default. It may download sources into temporary storage but never changes the skill destination. The output identifies `install`, `unchanged`, or `replace` targets. A differing existing directory is a conflict and needs review; see [updates](offline-and-updates.md#updates-and-conflicts).
+Preview is the default. It may download sources into temporary storage but never changes the skill destination. The output identifies `install`, `unchanged`, or `replace` targets. A differing existing directory is a conflict and needs review; see [updates](offline-and-updates.md#updates-and-conflicts). No package manager or runtime is installed by this process.
 
 ## Install the approved selection
 

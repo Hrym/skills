@@ -12,6 +12,8 @@
 - [Improve reusable guidance](improving-skills.md): when to propose a skill/script/update and how to validate and deploy it deliberately.
 - [Staying in control](staying-in-control.md): workflow overlap, testing scope, evidence, and stop conditions.
 - [Offline installation and updates](offline-and-updates.md): source snapshots, conflicts, backups, troubleshooting, and platform checks.
+- [Optional skill groups](optional-skills.md): upstream sources, exact group contents, caveats, and offline selection examples.
+- [Approved reference locations](reference-sources.md): internal guideline hosting, linked-resource review, and project-level source overrides without modifying upstream skills.
 - [Set up quality-first OpenCode agents](setup-opencode-routing.md): requirements, installation, model profiles, validation, customization, and rollback.
 - [Routing design](routing-design.md): delegation costs, role boundaries, reasoning effort, research verification, and evaluation criteria.
 

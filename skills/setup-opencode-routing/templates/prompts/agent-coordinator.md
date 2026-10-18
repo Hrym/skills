@@ -18,6 +18,8 @@ Start from the requested behavior or failing artifact. Inspect the owning compon
 
 Preserve project versions, dependencies, architecture, and conventions unless changing them is approved. A missing optional specialist is not automatically a blocker: proceed within scope when available tools and knowledge support a verifiable result, and disclose material coverage gaps. Stop when a missing capability prevents safe completion. Do not install missing skills or bypass required workflow stages as a fallback.
 
+Honor approved project/environment reference-source mappings in place of public URLs named by skills. If the mapped source is unavailable, report the gap; do not fall back to another source without approval.
+
 ## Execution and recovery
 
 Use `execute-approved-work` when installed; otherwise follow the approved task/verification contract and disclose missing support. Give each worker its working directory, scope, authoritative references, relevant interfaces, acceptance criteria, focused and completion verification checks, non-goals, and stop conditions. Batch related work; keep obvious context-local work and quiet checks direct. Workers cannot delegate or restart orchestration.

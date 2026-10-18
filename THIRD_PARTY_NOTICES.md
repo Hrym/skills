@@ -35,3 +35,7 @@ SOFTWARE.
 ## Optional existing Superpowers installations
 
 Migration guidance refers to [Superpowers](https://github.com/obra/superpowers), by Jesse Vincent, when discussing existing environments. The recommended setup neither requires nor vendors its plugin. Superpowers is distributed separately under its own [MIT license](https://github.com/obra/superpowers/blob/main/LICENSE).
+
+## Optional upstream catalogue skills
+
+Optional skills are fetched as complete, unmodified upstream directories from the pinned revisions and paths in the [catalogue](skills/setup-development-environment/catalogue.json). The installer preserves the selected source license with each installed skill as `SOURCE-LICENSE`. Matt's core skills and optional skills use distinct source revisions and must not be conflated. These upstream files are not locally vendored or relicensed by this repository's [MIT license](LICENSE); Hrym-authored material remains under that license, subject to applicable third-party notices. Retain full upstream directories and their notices when staging or installing them.

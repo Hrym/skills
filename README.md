@@ -4,7 +4,7 @@ Reusable skills for a development workflow with clear requirements, bounded test
 
 **New to agent-assisted development? [Start here](docs/start-here.md).**
 
-**Ready to install? [Set up your environment](docs/setup-development-environment.md).** The installer requires Python 3.10+, uses no pip/npm packages, and supports trusted local sources without network access.
+**Ready to install? [Set up your environment](docs/setup-development-environment.md).** The installer requires Python 3.10+, uses no pip/npm packages, and supports trusted local source exports; offline mode means no fetching by the installer.
 
 ## Available skills
 
@@ -16,6 +16,9 @@ Reusable skills for a development workflow with clear requirements, bounded test
 | [write-commit-and-pr](skills/write-commit-and-pr/SKILL.md) | Draft Git commit messages and PR descriptions explaining why the change and approach are needed | Access to the intended diff and available rationale |
 | [finish-approved-work](skills/finish-approved-work/SKILL.md) | Perform requested Git integration and owned-workspace cleanup without losing unrelated work or recovery notes | Git, the intended change, and explicit operation authority |
 | [setup-opencode-routing](skills/setup-opencode-routing/SKILL.md) | Configure OpenCode models, worker roles (including read-only research), permissions, and reasoning defaults | OpenCode and confirmed model access |
+| [research-handoff](skills/research-handoff/SKILL.md) | Prepare portable research questions and reconcile returned evidence across environments | A user-mediated handoff; repository access is optional |
+
+These are the seven skills authored in this repository. Optional upstream skills are not vendored here; the [optional skills guide](docs/optional-skills.md) describes how to select and retrieve them.
 
 ### Quality-first OpenCode routing
 
@@ -40,7 +43,7 @@ python3 skills/setup-development-environment/scripts/install.py
 
 On Windows use your Python command, typically `python` or `py -3`. Preview may fetch sources but does not change the installation destination. Use local `--source` roots and `--offline` for no-network installation. See the [setup guide](docs/setup-development-environment.md) before applying changes.
 
-For maintaining skills, select `--group core --group authoring` to add Matt's `writing-for-agents`. [Improvement proposals](docs/improving-skills.md) are evidence-driven and nonblocking; they do not silently alter installed skills.
+Catalogue selections default to preview; add `--apply` only after reviewing. `--all-groups` selects every defined group and its dependencies; use it deliberately as the catalogue grows. Optional specialist groups are listed in the [optional skills guide](docs/optional-skills.md). [Improvement proposals](docs/improving-skills.md) are evidence-driven and nonblocking.
 
 Installing a skill makes its instructions available; it does not automatically apply its configuration templates. Follow the individual user guide and review changes before accepting them.
 
@@ -57,4 +60,4 @@ Installer checks: `python3 -m unittest discover -s tests -v` (or `python -m unit
 
 ## License
 
-[MIT](LICENSE). Third-party material and integration dependencies are identified in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+[MIT](LICENSE) applies to Hrym-authored repository material, except where files or portions carry their own notices or third-party licenses. Third-party material and integration dependencies are identified in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

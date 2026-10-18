@@ -2,16 +2,20 @@
 
 ## Offline installation
 
-Bring complete trusted snapshots of this repository and Matt's source repository, including their licenses. The [catalogue](../skills/setup-development-environment/catalogue.json) records the selected Matt revision and each required relative skill path. Export that revision on a connected machine when you need reproducibility; a local source override itself is reported as unverified.
+Bring complete trusted source roots with their required licenses. The [catalogue](../skills/setup-development-environment/catalogue.json) records all source revisions and required paths. The Matt core and optional skills are distinct revisions and require separate roots. A local source override itself is reported as unverified.
 
-Source roots are repositories, not flat installed skill collections. Matt's selected skills live under `skills/engineering/` and `skills/productivity/`. Do not copy only the visible `SKILL.md` files: referenced documents, templates, and scripts belong with them.
+Source roots are repositories, not flat installed skill collections. Matt's selected skills span `skills/engineering/`, `skills/productivity/`, and `skills/in-progress/`. Do not copy only visible `SKILL.md` files: referenced documents, templates, scripts, and upstream licenses belong with them. Export complete pinned source trees; Git metadata is not required.
 
 Linux, from the Hrym export:
 
 ```bash
 python3 skills/setup-development-environment/scripts/install.py \
   --source hrym=/media/sources/hrym-skills \
-  --source matt=/media/sources/matt-skills \
+  --source matt=/media/sources/matt-core-skills \
+  --source matt-optional=/media/sources/matt-optional-skills \
+  --source github-awesome-copilot=/media/sources/awesome-copilot \
+  --source anthropic=/media/sources/anthropic-skills \
+  --source microsoft-playwright-cli=/media/sources/playwright-cli \
   --offline
 ```
 
@@ -20,17 +24,39 @@ Windows with Git Bash:
 ```bash
 python skills/setup-development-environment/scripts/install.py \
   --source "hrym=C:/Skill Sources/hrym-skills" \
-  --source "matt=C:/Skill Sources/matt-skills" \
+  --source "matt=C:/Skill Sources/matt-core-skills" \
+  --source "matt-optional=C:/Skill Sources/matt-optional-skills" \
+  --source "github-awesome-copilot=C:/Skill Sources/awesome-copilot" \
+  --source "anthropic=C:/Skill Sources/anthropic-skills" \
+  --source "microsoft-playwright-cli=C:/Skill Sources/playwright-cli" \
   --offline
 ```
 
-Review, then repeat with `--apply`. Add `--destination PATH` if necessary; otherwise Python's home directory determines `.agents/skills`. For optional planning, include both `--group core --group planning`.
+The checkout or export containing the installer and catalogue is still required locally. The examples explicitly override all six catalogue sources; source exports need no `.git` metadata. Review, then repeat the same command with `--apply`. Add `--destination PATH` if necessary; otherwise Python's home directory determines `.agents/skills`. Explicit groups do not add `core` implicitly. For optional planning, include both `--group core --group planning`.
 
-Offline mode does not fetch missing sources, attempt network fallback, or require Git for copying. It fails with the source/path that is missing. Offline skill installation does not create a local model endpoint or account credentials. The agent application must separately have an inference route available in that environment.
+For example, a staged installer/catalogue checkout and all six source roots can be used with fetching disabled:
+
+```bash
+python3 skills/setup-development-environment/scripts/install.py --list
+python3 skills/setup-development-environment/scripts/install.py \
+  --group core --group large-planning \
+  --source hrym=/media/sources/hrym-skills \
+  --source matt=/media/sources/matt-core-skills \
+  --source matt-optional=/media/sources/matt-optional-skills \
+  --source github-awesome-copilot=/media/sources/awesome-copilot \
+  --source anthropic=/media/sources/anthropic-skills \
+  --source microsoft-playwright-cli=/media/sources/playwright-cli --offline
+```
+
+The command previews. Repeat with `--apply` only after inspecting the selection and conflicts. See [all optional groups](optional-skills.md). Installing skills installs no packages or runtimes; it also does not mean all installed skills are loaded in every conversation.
+
+`--offline` means only that the installer does not fetch missing skill sources; it does not describe public Internet availability or disable approved internal trackers, Git/package services, or model endpoints. It does not attempt network fallback and does not require Git for copying exported roots. It fails with the source/path that is missing. Offline skill installation does not create a local model endpoint or account credentials. Check actual prerequisites/access before assuming internal services are available.
+
+Copying a skill does not authorize network access, model selection, or acquisition of sensitive artifacts. For externally hosted reference material, configure [approved reference locations](reference-sources.md); this guide does not provision application tools or runtimes. If research requires unavailable sources, the optional `research-handoff` skill supports a human-mediated question-only or repository-aware request.
 
 ## Source revisions and private repositories
 
-The default Hrym Git URL uses SSH and can require repository access; configure Git authentication separately or use a local source. The default Hrym `main` reference moves. To pin a release, use a reviewed catalogue with an exact ref through `--catalogue PATH`. Matt's default revision is already pinned.
+The default Hrym Git URL uses SSH and can require repository access; configure Git authentication separately or use a local source. The default Hrym `main` reference moves. To pin a release, use a reviewed catalogue with an exact ref through `--catalogue PATH`. Matt core, Matt optional, and the other optional source revisions are pinned separately.
 
 Online retrieval reports its resolved commit. Preview can download into temporary storage even though the destination remains untouched. Git failures report the source and operation while withholding raw Git output that may contain private URLs or credentials. Diagnose access locally; do not paste secrets into an agent conversation.
 

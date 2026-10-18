@@ -24,20 +24,24 @@ For maintaining skills, select `--group core --group authoring` (add `--group pl
 
 ## Sources and offline mode
 
-`catalogue.json` defines source IDs, Git URLs/revisions, relative skill paths, dependencies, purposes, and groups. Matt's source is pinned; Hrym's `main` is a moving reference, not a reproducible release pin. Remote fetching reports the resolved commit. Update a trusted catalogue's `ref` to an approved commit if exact repeatability is required.
+`catalogue.json` defines source IDs, Git URLs/revisions, relative skill paths, dependencies, purposes, and groups. The Hrym and Matt core sources retain their existing refs; four optional source roots are pinned separately (including a distinct Matt optional revision). Remote fetching reports the resolved commit. Update a trusted catalogue's `ref` to an approved commit if exact repeatability is required.
 
-The default Hrym source uses SSH and may require repository access. The script recognizes its own Hrym checkout automatically. A copied skill or exported repository without `.git` must be given `--source hrym=PATH`; do not infer a repository from an arbitrary parent directory. `--source` overrides point to repository roots, not the installed flat skills directory. Existing local files take precedence and are reported as local/unverified, even when a catalogue contains a remote pin. They are not pulled or rewritten.
+The default Hrym source uses SSH and may require repository access. The script recognizes its own Hrym checkout automatically. A copied skill or exported repository without `.git` must be given `--source hrym=PATH`; do not infer a repository from an arbitrary parent directory. The checkout containing the installer and catalogue is still needed for offline use. `--source` overrides point to repository roots, not the installed flat skills directory. Existing local files take precedence and are reported as local/unverified, even when a catalogue contains a remote pin. They are not pulled or rewritten. `--offline` means only that source repositories will not be fetched; it is not a claim that the host has no public Internet and does not block approved internal trackers, Git/package services, or model endpoints.
 
 ```bash
 python3 skills/setup-development-environment/scripts/install.py \
   --source hrym=/media/sources/hrym-skills \
-  --source matt=/media/sources/matt-skills \
+  --source matt=/media/sources/matt-core-skills \
+  --source matt-optional=/media/sources/matt-optional-skills \
+  --source github-awesome-copilot=/media/sources/awesome-copilot \
+  --source anthropic=/media/sources/anthropic-skills \
+  --source microsoft-playwright-cli=/media/sources/playwright-cli \
   --destination "$HOME/.agents/skills" --offline
 ```
 
 Add `--apply` after reviewing. On Windows, quote Python-compatible paths, for example `--source "matt=C:/Skill Sources/matt-skills"`. In Git Bash, `cygpath -m "$HOME/.agents/skills"` can produce a Windows path when passing an explicit destination. Otherwise the default is Python's home directory plus `.agents/skills`.
 
-Local roots must contain the paths and source licenses named by the catalogue, including Matt's categorized `skills/engineering/` and `skills/productivity/` directories. Transfer complete trusted repository snapshots for convenience. Offline mode never fetches missing material; it reports the required `--source` argument. Offline installation does not supply an offline model endpoint or credentials.
+Local roots must contain the paths and source licenses named by the catalogue, including the two separate Matt revisions and their categorized `skills/engineering/`, `skills/productivity/`, and `skills/in-progress/` directories. Transfer complete trusted repository snapshots for convenience; the example supplies all six source roots explicitly. An export without Git metadata works because offline installation copies files only. Offline mode never fetches missing material; it reports the required `--source` argument. Offline installation does not supply an offline model endpoint or credentials. Approved internal trackers and services may remain available in an Internet-isolated environment; do not assert they are usable without checking prerequisites and access.
 
 `--catalogue PATH` selects an alternative trusted catalogue with the same schema. Use it for reviewed mirrors, revisions, or a different source layout. Do not solve missing content by silently modifying the approved group selection.
 
@@ -88,7 +92,7 @@ The compact standing policy in the router is necessary: a skill that loads only 
 
 ## Recommended catalogue
 
-Run `--list` for the exact selection and purposes. `core` resolves to fourteen skills: environment setup, intent capture, execution, commit/PR writing, finishing, routing, grilling/domain helpers, TDD/interface-design reference, two-axis review, scoped diagnosis, and project-convention setup. `planning` adds spec/ticket synthesis; `authoring` adds writing-for-agents. Other specialist candidates are not shipped merely because they were discussed or exist upstream.
+Run `--list` for the exact selection and purposes. The catalogue contains 32 skills in 14 groups. `core` resolves to fourteen skills: environment setup, intent capture, execution, commit/PR writing, finishing, routing, grilling/domain helpers, TDD/interface-design reference, two-axis review, scoped diagnosis, and project-convention setup. Specialist groups are opt-in; their exact contents and dependencies are listed by the catalogue. `--all-groups` selects all defined groups and dependencies; preview and inspect it as the catalogue grows.
 
 At meaningful completion, the coordinator may propose reusable improvements from evidence and expected repetition. Project-specific facts belong in project docs; mechanical repeats may deserve scripts; portable methods may deserve a skill. Prefer correcting an existing owner. Proposals are nonblocking and edits/deployment require approval; no automatic retrospective, transcript-to-skill dump, or installed-cache rewrites.
 

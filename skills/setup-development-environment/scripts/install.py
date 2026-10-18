@@ -22,6 +22,8 @@ def arguments():
                         default=Path(__file__).resolve().parents[1] / "catalogue.json")
     parser.add_argument("--group", action="append",
                         help="Union of supplied groups; core only when no --group is supplied")
+    parser.add_argument("--all-groups", action="store_true",
+                        help="Select the union of every defined group")
     parser.add_argument("--list", action="store_true", help="List purposes without fetching")
     parser.add_argument("--source", action="append", default=[], metavar="ID=PATH",
                         help="Local repository root (repeatable; last value per ID wins)")
@@ -182,7 +184,13 @@ def install(args, catalogue, temporary):
                              (args.backup_dir, *args.backup_dir.parents))):
         raise InstallError("Backup directory must be outside the destination and skill-discovery "
                            f"trees (directories named 'skills'): {args.backup_dir}")
-    names = select_skills(catalogue, args.group or ["core"])
+    groups = sorted(catalogue["groups"]) if args.all_groups else args.group or ["core"]
+    if args.group:
+        for group in args.group:
+            if group not in catalogue["groups"]:
+                raise InstallError(f"Unknown group: {group}")
+    print(f"Selected groups: {', '.join(groups)}")
+    names = select_skills(catalogue, groups)
     sources = resolve_sources(args, catalogue, names, temporary)
 
     plan = []
