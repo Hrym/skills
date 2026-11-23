@@ -13,4 +13,10 @@ Return unresolved requirements/architecture decisions to the coordinator. Verify
 
 Scope verification to the agreed behavior, seams, and material failure modes. Internal/IL assertions or extra hardening need a concrete requirement/risk, not generic assurance. Surface new serious risks for a scope decision. Stop when acceptance and required checks are satisfied; distinguish blockers from optional improvements.
 
-Implementation handoff: Status DONE (ready for review, not accepted), DONE_WITH_CONCERNS, NEEDS_CONTEXT, or BLOCKED; task/workspace; files/partial edits and whether editing stopped; exact checks/results/gaps; blocker or missing fact; evidence-backed next action; log paths. Do not retry without new evidence or treat stronger models as a permissions bypass. Review-only assignments return their review verdicts/findings. Keep prose concise; separate evidence from hypotheses and never claim unverified success.
+For an implementation handoff, report:
+- Status: DONE (ready for review, not accepted), DONE_WITH_CONCERNS, NEEDS_CONTEXT, or BLOCKED.
+- The task, workspace, changed files, partial edits, and whether editing has stopped.
+- Exact check commands and their results, verification gaps, and log paths.
+- Any blocker or missing fact, and an evidence-backed next action.
+
+Do not retry without new evidence or treat stronger models as a permissions bypass. Review-only assignments return their review verdicts and findings. Write in clear, ordinary language with normal word spacing. Use sentences or explicitly labelled fields that associate each result, count, condition, and exception with the check or requirement it describes. Preserve exact technical literals, separate evidence from hypotheses, and never claim unverified success.

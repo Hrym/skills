@@ -30,7 +30,7 @@ T2 partial work: files/hunks; checks run/skipped; missing fact: empty-input poli
 Next: ask user for policy; preserve T2 edits; confirm ownership before continuation.
 ```
 
-Update at dispatch, partial/blocking returns, review rulings, acceptance, and handoff; this is not a per-tool diary. Tell the user briefly when a meaningful task, decision, or blocker changes.
+Update at dispatch, partial/blocking returns, review rulings, acceptance, and handoff; this is not a per-tool diary. Tell the user when meaningful task progress, a decision, or a blocker changes.
 
 ## Reconcile before continuing
 

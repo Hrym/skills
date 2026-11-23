@@ -68,11 +68,13 @@ Higher effort is not a fixed token budget, free additional quality, or equivalen
 
 Avoid adding a worker for every model/effort combination. First identify a recurring failure or inefficiency. Add Terra or another alternative only if matched-task trials show a repeatable quality, latency, cost, or access benefit. Obtain approval before paid experiments or changing provider/account assumptions.
 
-## Keep runtime prompts compact
+## Make runtime instructions explicit
 
-Use concise grammatical instructions and evidence-bearing handoffs. Remove repeated explanations and process recaps, not uncertainty, conditions, negations, exact errors, or useful progress updates. Runtime workers need their role contract, not the entire setup guide or conversation history.
+Use clear, ordinary language and evidence-bearing handoffs. State the relationships between actions, objects, values, conditions, and exceptions explicitly, preserving normal word spacing and exact technical literals. Assignments and reports are judged by their accuracy and interpretability, not their length. Runtime workers need their applicable role contract, authoritative references, and task context rather than the entire setup guide or conversation history. Preserve uncertainty, conditions, negations, exact errors, and useful progress updates.
 
-The harness, tool definitions, loaded skills, and task material also consume context. Compressing a prompt helps, but starting many tiny sessions or rereading a large log can outweigh those savings. Review worker results proportionately rather than repeating their entire process.
+Manage context by selecting relevant material, reusing authoritative references, and avoiding redundant work. This is separate from how the agent phrases an assignment or report. Review worker results proportionately rather than repeating their entire process.
+
+Validate communication changes against raw outgoing worker assignments and returned reports, including longer exchanges with multiple check totals, file names, revisions, conditions, and an unrelated timeout. Each value must remain explicitly associated with its check or requirement; preserve technical literals, verification gaps, uncertainty, scope, and stop conditions. Static prompt and configuration checks establish consistency and wiring, not that concatenation has stopped. Obtain approval before paid model trials.
 
 ## Preserve workflow obligations
 

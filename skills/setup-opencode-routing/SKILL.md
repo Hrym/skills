@@ -5,7 +5,7 @@ description: Use when configuring or migrating OpenCode agent roles, workflow ro
 
 # Set up OpenCode routing
 
-Bind stable roles to models confirmed for this environment. Catalog presence is not entitlement. Keep prompts concise and preserve the selected workflow's obligations. No orchestration plugin is required.
+Bind stable roles to models confirmed for this environment. Catalog presence is not entitlement. Write prompts in clear, ordinary language with explicit technical relationships and preserve the selected workflow's obligations. Include the instructions applicable to each role and task. No orchestration plugin is required.
 
 Use `customize-opencode` when available. Read [SETUP.md](SETUP.md) and the relevant files under `templates/` before editing. These are a complete **GPT-6.1 Sol / GPT-6 Luna no-Astra example**, not an automatic installer or universal model list.
 
