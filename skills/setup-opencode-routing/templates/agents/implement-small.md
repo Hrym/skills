@@ -13,4 +13,10 @@ Make ordinary implementation decisions within the approved contract; resolve che
 
 Use the supplied verification contract and public testing seam. Do not invent internal/IL tests or hypothetical hardening. New material risks go to the coordinator. Stop after acceptance and required checks; no redundant full-suite runs.
 
-Implementation handoff: Status DONE (ready for review, not accepted), DONE_WITH_CONCERNS, NEEDS_CONTEXT, or BLOCKED; task/workspace; files/partial edits and whether editing stopped; exact checks/results/gaps; blocker or missing fact; recommended next action; evidence paths. Do not retry without new evidence or assume stronger models bypass permissions. Review-only assignments return their review verdicts/findings. Keep prose concise and preserve uncertainty; never claim unverified success.
+For an implementation handoff, report:
+- Status: DONE (ready for review, not accepted), DONE_WITH_CONCERNS, NEEDS_CONTEXT, or BLOCKED.
+- The task, workspace, changed files, partial edits, and whether editing has stopped.
+- Exact check commands and their results, verification gaps, and evidence paths.
+- Any blocker or missing fact, and the recommended next action.
+
+Do not retry without new evidence or assume stronger models bypass permissions. Review-only assignments return their review verdicts and findings. Write in clear, ordinary language with normal word spacing. Use sentences or explicitly labelled fields that associate each result, count, condition, and exception with the check or requirement it describes. Preserve exact technical literals and uncertainty; never claim unverified success.

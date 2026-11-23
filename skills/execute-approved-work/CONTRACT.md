@@ -1,6 +1,6 @@
 # Verification and handoff contract
 
-Keep this small. Reuse approved spec decisions; do not make the user repeat them.
+State the applicable behavior, boundaries, and evidence requirements explicitly. Reuse approved spec decisions; do not make the user repeat them.
 
 ```text
 Observable behavior:
@@ -16,6 +16,8 @@ Acceptance criteria and stop conditions:
 For a gameplay-input change, a contract might require valid commands to produce the expected action and invalid commands to return the specified result through the input interface. IL inspection and hostile in-process code are not part of that contract unless generated code or such a trust boundary is an actual requirement. A discovered injection path is material new evidence; the coordinator must raise it.
 
 ## Worker brief
+
+Write assignments and reports in clear, ordinary language with normal word spacing. Use sentences or explicitly labelled fields that associate each value, result, condition, and exception with the requirement or check it describes. Preserve exact identifiers, commands, paths, and literal values. Distinguish confirmed facts and requirements from assumptions and hypotheses; resolve consequential uncertainty before assigning implementation.
 
 - Approved task/spec, authoritative intent link when present, and relevant project instructions.
 - Working directory, starting state, assigned files/boundaries, and dependencies.
@@ -37,7 +39,7 @@ Every return uses one status. These are implementation outcomes, not review verd
 Include:
 
 - Task ID, status, workspace, changed files, and partial-work state: what is complete, incomplete, or unsafe to use. State whether the worker has stopped editing.
-- Exact check commands, exit codes when available, results, evidence/log paths, and skipped/incomplete checks. Include red/green evidence where TDD applies; concise decisive excerpts, not full logs.
+- Exact check commands, exit codes when available, results, evidence and log paths, and skipped or incomplete checks. Include red/green evidence where TDD applies; include decisive excerpts rather than full logs.
 - Material assumptions, remaining risks, and the precise missing fact or blocker (or explicitly none). Separate observations from hypotheses.
 - Recommended next action and what fact, permission, or evidence would make it useful. A status label alone is insufficient.
 

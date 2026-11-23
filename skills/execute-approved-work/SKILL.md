@@ -24,7 +24,7 @@ Do context-local work directly; delegate sustained work using CONTRACT.md. Start
 
 Use `tdd` for meaningful new behavior/fixes at approved seams: observe failure, implement minimally, verify. Reuse behavioral tests for refactoring; use appropriate native/schema/link checks for configuration/documentation. No test padding or unrelated refactoring. Run focused checks during edits and completion checks on the stable integrated tree; reuse only applicable evidence.
 
-Give brief user progress at meaningful task, decision, and blocker transitions, not every tool result.
+Report meaningful task progress, decisions, and blockers to the user rather than narrating each tool result.
 
 ## Review the actual change
 
